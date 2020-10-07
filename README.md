@@ -18,3 +18,10 @@
 https://github.com/junegunn/vim-plug#neovim
 
 https://github.com/junegunn/fzf.vim#using-vim-plug
+
+
+# Applying the dotfiles
+> $ stow <folder>
+
+Update bat to apply the theme:
+> $ bat cache --build
