@@ -7,6 +7,9 @@ source /usr/local/share/zsh-history-substring-search/zsh-history-substring-searc
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+# Load auto completions
+autoload -Uz compinit && compinit
+
 # FZF Defaults
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
@@ -16,7 +19,7 @@ LOCAL_RC=$HOME/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
 
 # Start FNM
-eval "$(fnm env --multi)"
+eval "$(fnm env)"
 
 # And then finally, Starship
 eval "$(starship init zsh)"
