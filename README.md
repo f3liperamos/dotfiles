@@ -1,5 +1,4 @@
-## Install things (GOAL - setup.sh, OSX and Linux)
-
+## Install things OSX only (GOAL - setup.sh, OSX and Linux)
 
 # Main stuff
 > $ brew install tree git curl bat ripgrep fd stow tmux starship zsh fzf Schniz/tap/fnm
