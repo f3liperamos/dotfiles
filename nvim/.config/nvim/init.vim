@@ -10,18 +10,20 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf.vim'
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
 "LSP Related
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-lua/completion-nvim'
 
-" I don't want these.
-" Plug 'vim-syntastic/syntastic'
+" Telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -29,6 +31,7 @@ syntax on
 set termguicolors
 set number 
 set list
+set linebreak
 colorscheme dracula 
 map <Space> <leader>
 
@@ -54,9 +57,6 @@ let g:fzf_action = { 'enter': 'tab split', 'ctrl-t': 'tab split', 'ctrl-x': 'spl
 set signcolumn=yes
 
 lua require('lsp_config')
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_auto_popup_while_jump = 1
-let g:diagnostic_insert_delay = 1
 
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
@@ -66,7 +66,7 @@ let g:completion_matching_strategy_list = ['exact', 'fuzzy']
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-" These shortcuts are not good, find new ones.
-" nmap <silent> <leader>[ <cmd>NextDiagnosticCycle<CR>
-" nmap <silent> <leader>] <cmd>PrevDiagnosticCycle<CR>
+" These shortcuts are not good, find new ones
+nnoremap <leader>dn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>dp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 
