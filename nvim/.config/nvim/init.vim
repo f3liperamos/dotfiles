@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
 
 " EditorConfig
@@ -23,6 +23,9 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" nvim-treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
@@ -40,16 +43,19 @@ nmap <leader>r :source $HOME/.config/nvim/init.vim<CR>
 
 " FZF
 " Search relative to where nvim was opened
-nmap <leader>p :Files!<CR>
-"Search relative to CURRENT file
-nmap <leader>P :Files! <C-R>=expand('%:h')<CR><CR>
-nmap <leader>hist :History!<CR>
-nmap <leader>rg :Rg!<CR>
-nmap <leader>b :Buffers!<CR>
-nmap <leader>gf :GFiles?<CR>
+" nmap <leader>p :Files!<CR>
+" Search relative to CURRENT file
+" nmap <leader>P :Files! <C-R>=expand('%:h')<CR><CR>
+" nmap <leader>hist :History!<CR>
+" nmap <leader>rg :Rg!<CR>
+" nmap <leader>b :Buffers!<CR>
+" nmap <leader>gf :GFiles?<CR>
+" let g:fzf_preview_window = 'right:70%'
+" let g:fzf_action = { 'enter': 'tab split', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
 
-let g:fzf_preview_window = 'right:70%'
-let g:fzf_action = { 'enter': 'tab split', 'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit' }
+" Telescope
+noremap <leader>p <cmd>Telescope find_files<CR>
+nnoremap <leader>hist <cmd>Telescope oldfiles<CR>
 
 " Load LSP configs
 
