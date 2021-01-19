@@ -1,0 +1,16 @@
+import:
+        - /Users/felipe.ramos/.config/alacritty/dracula.yml
+
+font:
+        normal:
+                family: JetBrains Mono
+        bold:
+                family: JetBrains Mono
+        italic:
+                family: JetBrains Mono
+
+window:
+        padding:
+                x: 4
+                y: 4
+        dynamic_padding: true
