@@ -6,6 +6,7 @@ call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Themes
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
 " EditorConfig
