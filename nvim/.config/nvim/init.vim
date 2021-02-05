@@ -6,8 +6,7 @@ call plug#begin()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Themes
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
@@ -32,7 +31,7 @@ set termguicolors number list linebreak
 set signcolumn=yes
 set completeopt=menuone,noinsert,noselect
 set shortmess+=c
-colorscheme dracula 
+colorscheme gruvbox
 
 map <Space> <leader>
 

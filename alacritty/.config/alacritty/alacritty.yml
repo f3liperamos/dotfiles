@@ -1,5 +1,5 @@
 import:
-        - /Users/felipe.ramos/.config/alacritty/dracula.yml
+        - /Users/felipe.ramos/.config/alacritty/gruvbox.yml
 
 font:
         normal:
