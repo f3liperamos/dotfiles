@@ -5,30 +5,30 @@ call plug#begin()
 " Plug 'ayu-theme/ayu-vim'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" LSP Related -- keeping it here to give another chance in future
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/completion-nvim'
+
+" Telescope -- keeping it here to give another chance in future
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+
 " Themes
 Plug 'morhetz/gruvbox'
 
 " EditorConfig
 Plug 'editorconfig/editorconfig-vim'
 
-"LSP Related
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'nvim-lua/completion-nvim'
-
-" Testing neoclide coc
+" Using coc over builtin lsp
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" Telescope
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " CoffeeIHopeItDiesSoonScript
 Plug 'kchmck/vim-coffee-script'
@@ -54,13 +54,7 @@ noremap <leader>lg <cmd>:Rg<CR>
 noremap <leader>hist <cmd>:History<CR>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 
-"
-" Telescope
-" noremap <leader>p <cmd>Telescope find_files<CR>
-" nnoremap <leader>hist <cmd>Telescope oldfiles<CR>
-" nnoremap <leader>lg <cmd> Telescope live_grep<CR>
-
-" Syntax - It breaks a lot in rust :(
+" loading treesitter
 lua require('treesitter')
 
 " Load LSP configs
@@ -72,11 +66,6 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " These shortcuts are not good, find new ones
-" nnoremap <leader>dn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-" nnoremap <leader>dp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-" nnoremap <leader>fmt <cmd>lua vim.lsp.buf.formatting()<CR>
-" nnoremap <leader>df <cmd>lua vim.lsp.buf.code_action()<CR>
-
 nmap <leader>dn <Plug>(coc-diagnostic-next)
 nmap <leader>dp <Plug>(coc-diagnostic-prev)
 nmap <leader>ff <Plug>(coc-fix-current)
