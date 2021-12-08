@@ -40,3 +40,8 @@ for _, lsp in ipairs(servers) do
 		on_attach = on_attach
 	}
 end
+
+lspconfig.ltex.setup{
+	filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "gitcommit" },
+	on_attach = on_attach
+}
