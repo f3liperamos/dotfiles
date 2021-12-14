@@ -2,15 +2,35 @@
 " Plugins
 " ========================
 call plug#begin()
+
+" ========================
+" Themes 
+" ========================
 Plug 'catppuccin/nvim'
+
+" ========================
+" Others / Not categorized yet
+" ========================
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'jose-elias-alvarez/null-ls.nvim'
+
+" ========================
+" Completion
+" ========================
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 
 " ========================
 " Shame Corner
@@ -28,15 +48,6 @@ set termguicolors number list linebreak
 set signcolumn=yes
 set shortmess+=c
 set background=dark
-set spell spelllang=en_us
-
-" ========================
-" Better completion
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-" ========================
-set completeopt=menuone,noinsert,noselect
 
 map <Space> <leader>
 
@@ -68,4 +79,4 @@ noremap <leader>k <cmd>Telescope keymaps<CR>
 lua require('treesitter')
 lua require('lsp_config')
 lua require('statusbar')
-
+lua require('autocomplete')
