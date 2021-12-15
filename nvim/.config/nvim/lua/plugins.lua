@@ -5,7 +5,7 @@ return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use("catppuccin/nvim")
+	use({"catppuccin/nvim", branch = 'main'})
 
 	-- fzf
 	use({ "junegunn/fzf", run = ":call fzf#install()" })
