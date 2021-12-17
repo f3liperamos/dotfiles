@@ -5,7 +5,7 @@
 --   }
 -- )
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -71,6 +71,6 @@ local null_ls = require("null-ls")
 null_ls.setup({
 	sources = {
 		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettier,
+		null_ls.builtins.formatting.prettierd,
 	},
 })

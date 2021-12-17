@@ -1,15 +1,14 @@
-require("plugins")
-require("treesitter")
-require("lsp_config")
-require("statusbar")
-require("autocomplete")
+-- Space also triggers Leaders
+vim.api.nvim_set_keymap("", "<Space>", "<Leader>", {})
 
 -- Theme
 vim.g.colors_name = "catppuccin"
 
+-- Not sure how to set it with lua
+vim.cmd("filetype plugin indent on")
+
 -- Not sure if I need it.
--- vim.cmd('filetype plugin indent on')
--- vim.cmd('syntax on')
+-- vim.cmd("syntax on")
 
 -- Options
 vim.opt.termguicolors = true
@@ -22,13 +21,6 @@ vim.opt.background = "dark"
 -- Is it needed?
 -- vim.opt.shortmess:append({c=true})
 
--- Telescope keybindings
-local opts = { noremap = true }
-vim.api.nvim_set_keymap("", "<Space>", "<Leader>", {})
-vim.api.nvim_set_keymap("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>hist", "<Cmd>Telescope oldfiles<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)
 
 --[[
 " ========================

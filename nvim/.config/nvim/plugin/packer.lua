@@ -1,6 +1,4 @@
-vim.cmd([[packadd packer.nvim]])
-
-return require("packer").startup(function(use)
+require("packer").startup(function(use)
 	-- packer itself
 	use("wbthomason/packer.nvim")
 
