@@ -1,7 +1,7 @@
 ## Install dependencies
 
 # Main stuff
-> $ brew install tree git curl bat ripgrep fd stow tmux alacritty fzf fnm lua lua-language-server python git-delta neovim less
+> $ brew install tree git curl bat ripgrep fd stow tmux alacritty fzf fnm lua lua-language-server python git-delta neovim less gh
 
 # ZSH
 > $ brew install zsh zsh-history-substring-search zsh-syntax-highlighting
