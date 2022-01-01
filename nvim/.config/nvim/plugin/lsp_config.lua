@@ -1,10 +1,3 @@
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
---   vim.lsp.diagnostic.on_publish_diagnostics, {
---     update_in_insert = false,
---     virtual_text = false,
---   }
--- )
-
 local on_attach = function(_, bufnr)
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
@@ -49,11 +42,14 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
+--[[
+-- Disable ltex for now
 lspconfig.ltex.setup({
 	filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "gitcommit" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
+]]
 
 lspconfig.sumneko_lua.setup({
 	settings = {

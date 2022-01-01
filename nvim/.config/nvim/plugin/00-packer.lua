@@ -1,9 +1,23 @@
-require("packer").startup(function(use)
+-- Bootstrapping packer
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
+
+return require("packer").startup(function(use)
 	-- packer itself
 	use("wbthomason/packer.nvim")
 
 	-- Themes
-	use({"catppuccin/nvim", branch = 'main'})
+	use({ "catppuccin/nvim", branch = "main" })
 
 	-- fzf
 	use({ "junegunn/fzf", run = ":call fzf#install()" })
@@ -29,4 +43,8 @@ require("packer").startup(function(use)
 
 	-- Shame corner
 	use("kchmck/vim-coffee-script")
+
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
