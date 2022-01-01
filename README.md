@@ -16,4 +16,4 @@
 https://github.com/dandavison/delta#git-config-file
 
 # Starship Shell
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+https://starship.rs/guide/#from-prebuilt-binary-with-shell
