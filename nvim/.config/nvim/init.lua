@@ -1,14 +1,12 @@
--- Space also triggers Leaders
+-- Set Space to also trigger Leader key
 vim.api.nvim_set_keymap("", "<Space>", "<Leader>", {})
 
 -- Theme
-vim.g.colors_name = "catppuccin"
+vim.cmd([[colorscheme catppuccin]])
 
--- Not sure how to set it with lua
-vim.cmd("filetype plugin indent on")
-
--- Not sure if I need it.
--- vim.cmd("syntax on")
+-- Not sure how to set these without vim.cmd
+vim.cmd([[filetype plugin indent on]])
+vim.cmd([[syntax on]])
 
 -- Options
 vim.opt.termguicolors = true
@@ -17,10 +15,6 @@ vim.opt.list = true
 vim.opt.linebreak = true
 vim.opt.signcolumn = "yes"
 vim.opt.background = "dark"
-
--- Is it needed?
--- vim.opt.shortmess:append({c=true})
-
 
 --[[
 " ========================
