@@ -1,6 +1,7 @@
 -- Bootstrapping packer
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap = fn.system({
 		"git",
@@ -18,6 +19,24 @@ return require("packer").startup(function(use)
 
 	-- Themes
 	use({ "catppuccin/nvim", branch = "main", as = "catppuccin" })
+
+	-- Add icons support
+	use("kyazdani42/nvim-web-devicons")
+
+	-- Make buffers look like tabs
+	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+
+	-- gitsigns
+	use({
+		"lewis6991/gitsigns.nvim",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		tag = "v0.4",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 
 	-- fzf
 	use({ "junegunn/fzf", run = ":call fzf#install()" })

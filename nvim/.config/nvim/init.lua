@@ -24,9 +24,4 @@ vim.opt.background = "dark"
 " noremap <leader>hist <cmd>:History<CR>
 " let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 " ========================
-
-" ========================
-" Loading lua config files
-" TODO: Convert all init.vim to init.lua
-" ========================
 ]]
