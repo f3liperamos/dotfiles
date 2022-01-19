@@ -28,9 +28,17 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap("n", "<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+require("lsp_signature").setup({
+	debug = true,
+	hint_enable = false,
+	handler_opts = { border = "single" },
+	max_width = 80,
+})
 
 local servers = { "rust_analyzer", "tsserver" }
 local lspconfig = require("lspconfig")

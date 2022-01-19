@@ -41,6 +41,9 @@ return require("packer").startup(function(use)
 	use("L3MON4D3/LuaSnip")
 	use("saadparwaiz1/cmp_luasnip")
 
+	-- LSP Signature
+	use("ray-x/lsp_signature.nvim")
+
 	-- Shame corner
 	use("kchmck/vim-coffee-script")
 
