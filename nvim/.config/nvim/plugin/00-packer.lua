@@ -42,6 +42,9 @@ return require("packer").startup(function(use)
 	use({ "junegunn/fzf", run = ":call fzf#install()" })
 	use("junegunn/fzf.vim")
 
+	-- Telescope related, trying fzy fuzzy algorithm
+	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "git submodule update --init --recursive" })
+
 	-- Others / Not categorized yet
 	use("editorconfig/editorconfig-vim")
 	use("nvim-lualine/lualine.nvim")

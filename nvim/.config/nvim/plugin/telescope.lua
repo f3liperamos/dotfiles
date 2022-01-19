@@ -1,5 +1,7 @@
 local actions = require("telescope.actions")
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		sorting_strategy = "ascending",
 		layout_config = {
@@ -17,6 +19,8 @@ require("telescope").setup({
 		},
 	},
 })
+
+telescope.load_extension("fzy_native")
 
 -- Telescope keybindings
 local opts = { noremap = true }
