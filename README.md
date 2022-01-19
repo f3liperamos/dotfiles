@@ -17,3 +17,7 @@ https://github.com/dandavison/delta#git-config-file
 
 # Starship Shell
 https://starship.rs/guide/#from-prebuilt-binary-with-shell
+
+# TODO
+[ ] - Create a script that syncs catpuccin theme files (kitty, allacrity, etc)
+[ ] - Drop startship (too much work, maybe not)
