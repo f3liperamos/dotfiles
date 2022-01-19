@@ -3,11 +3,11 @@ import:
 
 font:
         normal:
-                family: JetBrains Mono
+                family: FiraMono NF
+                style: Regular
         bold:
-                family: JetBrains Mono
-        italic:
-                family: JetBrains Mono
+                family: FiraMono NF
+                style: Bold
 
 window:
         padding:
