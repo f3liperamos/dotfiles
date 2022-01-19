@@ -1,13 +1,16 @@
 local on_attach = function(_, bufnr)
+	--[[ Disabling omnifunc, it's cmp_nvim_lsp job now
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
 
 	-- Enable completion triggered by <c-x><c-o>
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+	]]
+
+	local function buf_set_keymap(...)
+		vim.api.nvim_buf_set_keymap(bufnr, ...)
+	end
 
 	-- Mappings
 	local opts = { noremap = true, silent = true }
@@ -28,11 +31,7 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap("n", "<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
-
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
+-- Enable auto signature help
 require("lsp_signature").setup({
 	debug = true,
 	hint_enable = false,
@@ -40,24 +39,18 @@ require("lsp_signature").setup({
 	max_width = 80,
 })
 
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
 local servers = { "rust_analyzer", "tsserver" }
 local lspconfig = require("lspconfig")
-
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
+for _, lsp_server in ipairs(servers) do
+	lspconfig[lsp_server].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
-
---[[
--- Disable ltex for now
-lspconfig.ltex.setup({
-	filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "gitcommit" },
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-]]
 
 lspconfig.sumneko_lua.setup({
 	settings = {
@@ -78,3 +71,12 @@ null_ls.setup({
 		null_ls.builtins.formatting.prettierd,
 	},
 })
+
+--[[
+-- Disable ltex for now
+lspconfig.ltex.setup({
+	filetypes = { "bib", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "gitcommit" },
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+]]
