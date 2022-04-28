@@ -13,8 +13,8 @@
 Use [stow](https://www.gnu.org/software/stow)
 > $ man stow
 
-TL;DR
-> $ stow -Rv <folder>
+tl;dr
+> $ stow -Rv \<folder\>
 
 # Git delta
 https://github.com/dandavison/delta#git-config-file
