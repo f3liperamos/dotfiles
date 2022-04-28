@@ -24,7 +24,10 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Make buffers look like tabs
-	use({ "akinsho/bufferline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "akinsho/bufferline.nvim", branch = "main", requires = "kyazdani42/nvim-web-devicons" })
+
+	-- debugger
+	use("mfussenegger/nvim-dap")
 
 	-- gitsigns
 	use({
