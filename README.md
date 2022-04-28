@@ -10,7 +10,11 @@
 > $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Applying the dotfiles
-> $ stow <folder>
+Use [stow](https://www.gnu.org/software/stow)
+> $ man stow
+
+TL;DR
+> $ stow -Rv <folder>
 
 # Git delta
 https://github.com/dandavison/delta#git-config-file
