@@ -1,7 +1,7 @@
 ## Install dependencies
 
 # Main stuff
-> $ brew install tree git curl bat ripgrep fd stow tmux alacritty fzf fnm lua lua-language-server python git-delta neovim less gh
+> $ brew install tree git curl bat ripgrep fd stow tmux alacritty fzf fnm lua lua-language-server python git-delta neovim less gh zoxide
 
 # ZSH
 > $ brew install zsh zsh-history-substring-search zsh-syntax-highlighting
@@ -19,5 +19,5 @@ https://github.com/dandavison/delta#git-config-file
 https://starship.rs/guide/#from-prebuilt-binary-with-shell
 
 # TODO
-[ ] - Create a script that syncs catpuccin theme files (kitty, allacrity, etc)
-[ ] - Drop startship (too much work, maybe not)
+- [ ] Create a script that syncs catpuccin theme files (kitty, allacrity, etc)
+- [ ] Drop startship (too much work, maybe not)
