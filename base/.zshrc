@@ -21,5 +21,8 @@ test -f $LOCAL_RC && source $LOCAL_RC
 # Start FNM
 eval "$(fnm env)"
 
+# Start zoxide
+eval "$(zoxide init zsh)"
+
 # And then finally, Starship
 eval "$(starship init zsh)"
