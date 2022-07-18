@@ -1,20 +1,13 @@
--- Set Space to also trigger Leader key
-vim.api.nvim_set_keymap("", "<Space>", "<Leader>", {})
+require "user.options"
+require "user.keymaps"
+require "user.plugins"
+require "user.colorscheme"
+require "user.cmp"
 
--- Theme
-vim.cmd([[colorscheme catppuccin]])
-
--- Not sure how to set these without vim.cmd
-vim.cmd([[filetype plugin indent on]])
-vim.cmd([[syntax on]])
-
--- Options
-vim.opt.termguicolors = true
-vim.opt.number = true
-vim.opt.list = true
-vim.opt.linebreak = true
-vim.opt.signcolumn = "yes"
-vim.opt.background = "dark"
+-- Not sure how to set these without vim.cmd, not
+-- even sure if I need those
+-- vim.cmd([[filetype plugin indent on]])
+-- vim.cmd([[syntax on]])
 
 --[[
 " ========================
