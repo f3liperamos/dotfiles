@@ -24,7 +24,10 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Make buffers look like tabs
-	use({ "akinsho/bufferline.nvim", branch = "main", requires = "kyazdani42/nvim-web-devicons" })
+	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
+
+	-- debugger
+	-- use("mfussenegger/nvim-dap")
 
 	-- gitsigns
 	use({
@@ -32,7 +35,7 @@ return require("packer").startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-		tag = "v0.4",
+		tag = "v0.5",
 		config = function()
 			require("gitsigns").setup()
 		end,
@@ -49,7 +52,11 @@ return require("packer").startup(function(use)
 	use("editorconfig/editorconfig-vim")
 	use("nvim-lualine/lualine.nvim")
 	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.*",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use("jose-elias-alvarez/null-ls.nvim")
 
