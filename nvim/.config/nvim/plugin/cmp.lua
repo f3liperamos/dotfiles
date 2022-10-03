@@ -27,9 +27,6 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "buffer", keyword_length = 3 },
 	},
-	view = {
-		entries = { name = "custom", selection_order = "near_cursor" },
-	},
 	experimental = {
 		native_menu = false,
 		ghost_text = true,
