@@ -15,6 +15,8 @@ vim.opt.list = true
 vim.opt.linebreak = true
 vim.opt.signcolumn = "yes"
 vim.opt.background = "dark"
+vim.opt.scrolloff = 8
+vim.opt.relativenumber = true
 
 --[[
 " ========================
