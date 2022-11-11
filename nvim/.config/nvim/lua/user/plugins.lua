@@ -45,7 +45,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- have packer manage itself
 
 	-- themes
-	use({ "catppuccin/nvim", branch = "main", as = "catppuccin" })
+	use({ "catppuccin/nvim", tag = "v0.2", as = "catppuccin" })
 
 	-- better (?) notifications
 	use "rcarriga/nvim-notify"
