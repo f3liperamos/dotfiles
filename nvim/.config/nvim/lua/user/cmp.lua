@@ -1,12 +1,15 @@
+local notify = require("user.notify")
+
 -- ensure cmp and luasnip exists
+local error_title = {title = "failed to start cmp.lua"}
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-  return
+  return notify("cmp not found", "error", error_title)
 end
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
+local luasnip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
-  return
+  return notify("luasnip not found", "error", error_title)
 end
 
 cmp.setup({
