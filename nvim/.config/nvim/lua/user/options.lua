@@ -1,12 +1,24 @@
+-- autocommand to reload options.lua when saving
+-- clear autogroup first to prevent it running multiple times
+vim.api.nvim_create_augroup("options_user_config", {clear = true})
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = "options_user_config",
+	pattern = "options.lua", 
+	command = "source <afile>",
+})
+
 local options = {
 	background = "dark",
 	cmdheight	= 2,
+	completeopt = {"menu", "menuone", "noinsert",  "noselect"},
 	fileencoding	= "utf-8",
 	ignorecase	= true,
 	linebreak = true,
 	list  = true, -- always display tabs and spaces
+	mouse = "a",
 	number = true,
 	pumheight	= 10,
+	relativenumber = true,
 	scrolloff = 8,
 	showtabline = 2,
 	signcolumn = "yes",
@@ -14,11 +26,6 @@ local options = {
 	smartindent	= true,
 	termguicolors = true,
 	undofile = true,
-	mouse = "a",
-	-- menuone: pop up even when there's only one match
--- noinsert: Do not insert text until a selection is made
--- noselect: Do not select, force user to select one from the menu
-	completeopt = { "menu", "menuone", "noselect" }
 }
 
 for key, value in pairs(options) do

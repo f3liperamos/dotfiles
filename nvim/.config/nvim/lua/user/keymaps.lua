@@ -10,8 +10,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- exit insert mode without cursing the
--- touchbar or doing gymnastics to reach esc
+-- exit insert mode without having tendinitis
+-- and as a bonus, stop cursing the lack of the
+-- physical Esc key in the touchbar
 keymap("i", "jk", "<Esc>", opts)
 keymap("i", "kj", "<Esc>", opts)
 
