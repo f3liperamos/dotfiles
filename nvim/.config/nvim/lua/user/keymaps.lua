@@ -25,3 +25,9 @@ keymap("v", "p", '"_dP', opts)
 
 -- toggle file explorer
 keymap("n", "<Leader>e", "<Cmd>Lexplore 30<CR>", opts)
+
+-- center screen after scrolling, jumping matches
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "n", "nzz", opts)
+keymap("n", "N", "Nzz", opts)
