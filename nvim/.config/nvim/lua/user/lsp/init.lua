@@ -1,0 +1,42 @@
+-- Check if all dependencies are installed, otherwise exits early
+local dependencies = { "mason", "mason-lspconfig", "lspconfig" }
+local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start LSP")
+if not status_ok then return end
+
+local mason, mason_lspconfig, lspconfig = unpack(deps)
+
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗"
+		}
+	}
+})
+
+local servers = {
+	"cssls",
+	"html",
+	"jsonls",
+	"rust_analyzer",
+	"sumneko_lua",
+	"tsserver",
+}
+
+mason_lspconfig.setup({ ensure_installed = servers })
+
+local handlers = require("user.lsp.handlers")
+for _, server in ipairs(servers) do
+	local settings = {
+		capabitilies = handlers.capabitilies,
+		on_attach = handlers.on_attach
+	}
+
+	local settings_ok, server_settings = pcall(require, "user.lsp.settings." .. server)
+	if settings_ok then
+		settings = vim.tbl_deep_extend("force", server_settings, settings)
+	end
+
+	lspconfig[server].setup(settings)
+end
