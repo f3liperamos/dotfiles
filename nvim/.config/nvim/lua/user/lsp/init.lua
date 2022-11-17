@@ -1,9 +1,9 @@
 -- Check if all dependencies are installed, otherwise exits early
-local dependencies = { "mason", "mason-lspconfig", "lspconfig" }
+local dependencies = { "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
 local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start LSP")
 if not status_ok then return end
 
-local mason, mason_lspconfig, lspconfig = unpack(deps)
+local mason, mason_lspconfig, lspconfig, mason_null_ls = unpack(deps)
 
 mason.setup({
 	ui = {
@@ -40,3 +40,13 @@ for _, server in ipairs(servers) do
 
 	lspconfig[server].setup(settings)
 end
+
+-- plug mason_null_ls to auto install linters
+mason_null_ls.setup({ ensure_installed = {
+	"prettierd",
+	"stylua",
+	"eslint_d",
+} })
+
+-- then, setup null_ls
+require("user.lsp.null-ls")

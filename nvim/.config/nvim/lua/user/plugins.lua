@@ -74,6 +74,8 @@ return packer.startup(function(use)
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
+		"jose-elias-alvarez/null-ls.nvim",
+		"jayp0521/mason-null-ls.nvim",
 	}
 
 	-- Bunch of cool snippets,
