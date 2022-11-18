@@ -1,6 +1,7 @@
 -- ensure cmp and luasnip exists
 local dependencies = { "cmp", "luasnip" }
-local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start cmp.lua")
+local status_ok, deps =
+	require("user.protected-require")(dependencies, "Failed to start cmp.lua")
 if not status_ok then
 	return
 end
@@ -44,7 +45,8 @@ cmp.setup({
 	formatting = {
 		format = function(entry, vim_item)
 			-- Kind icons
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+			vim_item.kind =
+				string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
 			-- Source
 			vim_item.menu = ({
 				buffer = "[Buffer]",

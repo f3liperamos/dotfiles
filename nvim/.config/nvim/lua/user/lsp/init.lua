@@ -1,6 +1,8 @@
 -- Check if all dependencies are installed, otherwise exits early
-local dependencies = { "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
-local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start LSP")
+local dependencies =
+	{ "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
+local status_ok, deps =
+	require("user.protected-require")(dependencies, "Failed to start LSP")
 if not status_ok then
 	return
 end
@@ -35,7 +37,8 @@ for _, server in ipairs(servers) do
 		on_attach = handlers.on_attach,
 	}
 
-	local settings_ok, server_settings = pcall(require, "user.lsp.settings." .. server)
+	local settings_ok, server_settings =
+		pcall(require, "user.lsp.settings." .. server)
 	if settings_ok then
 		settings = vim.tbl_deep_extend("force", server_settings, settings)
 	end
@@ -44,11 +47,13 @@ for _, server in ipairs(servers) do
 end
 
 -- plug mason_null_ls to auto install linters
-mason_null_ls.setup({ ensure_installed = {
-	"prettierd",
-	"stylua",
-	"eslint_d",
-} })
+mason_null_ls.setup({
+	ensure_installed = {
+		"prettierd",
+		"stylua",
+		"eslint_d",
+	},
+})
 
 -- then, setup null_ls
 require("user.lsp.null-ls")
