@@ -1,5 +1,5 @@
 local keymap = vim.api.nvim_set_keymap
-local opts = {silent = true, noremap=true}
+local opts = { silent = true, noremap = true }
 
 -- set space to also trigger leader key
 keymap("", "<Space>", "<Leader>", {})

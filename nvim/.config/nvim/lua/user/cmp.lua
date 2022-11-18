@@ -1,7 +1,9 @@
 -- ensure cmp and luasnip exists
 local dependencies = { "cmp", "luasnip" }
 local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start cmp.lua")
-if not status_ok then return end
+if not status_ok then
+	return
+end
 
 local cmp, luasnip = unpack(deps)
 
@@ -30,7 +32,7 @@ local kind_icons = {
 	Struct = "",
 	Event = "",
 	Operator = "",
-	TypeParameter = ""
+	TypeParameter = "",
 }
 
 cmp.setup({
@@ -42,7 +44,7 @@ cmp.setup({
 	formatting = {
 		format = function(entry, vim_item)
 			-- Kind icons
-			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
+			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
 			-- Source
 			vim_item.menu = ({
 				buffer = "[Buffer]",
@@ -51,15 +53,15 @@ cmp.setup({
 				nvim_lua = "[nvim_lua]",
 			})[entry.source.name]
 			return vim_item
-		end
+		end,
 	},
 	mapping = cmp.mapping.preset.insert({
 		-- also testing ergonomics for k j item navigation
-		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), {"i", "c"}),
-		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), {"i", "c"}),
-		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+		["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+		["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+		["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+		["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-e>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),

@@ -1,6 +1,8 @@
 local dependencies = { "null-ls" }
 local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start null-ls.lua")
-if not status_ok then return end
+if not status_ok then
+	return
+end
 
 local null_ls = unpack(deps)
 
@@ -9,6 +11,6 @@ null_ls.setup({
 	sources = {
 		formatting.stylua,
 		formatting.eslint_d,
-		formatting.prettierd
+		formatting.prettierd,
 	},
 })

@@ -1,6 +1,6 @@
 -- check if nvim-notify exists otherwise return an error message
 -- and a fallback to original vim.notify
-local status_ok, notify = pcall(require, 'notify')
+local status_ok, notify = pcall(require, "notify")
 if not status_ok then
 	local mapping = {
 		["debug"] = vim.log.levels.DEBUG,

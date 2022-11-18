@@ -1,14 +1,14 @@
 return {
 	settings = {
 		Lua = {
-			runtime = {version = 'LuaJIT'},
+			runtime = { version = "LuaJIT" },
 			diagnostics = {
-				globals = {'vim'},
+				globals = { "vim" },
 			},
 			workspace = {
-				library = vim.api.nvim_get_runtime_file('', true)
+				library = vim.api.nvim_get_runtime_file("", true),
 			},
-			telemetry = {enable = false},
+			telemetry = { enable = false },
 		},
-	}
+	},
 }

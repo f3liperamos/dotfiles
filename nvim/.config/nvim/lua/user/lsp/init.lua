@@ -1,7 +1,9 @@
 -- Check if all dependencies are installed, otherwise exits early
 local dependencies = { "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
 local status_ok, deps = require("user.protected-require")(dependencies, "Failed to start LSP")
-if not status_ok then return end
+if not status_ok then
+	return
+end
 
 local mason, mason_lspconfig, lspconfig, mason_null_ls = unpack(deps)
 
@@ -10,9 +12,9 @@ mason.setup({
 		icons = {
 			package_installed = "✓",
 			package_pending = "➜",
-			package_uninstalled = "✗"
-		}
-	}
+			package_uninstalled = "✗",
+		},
+	},
 })
 
 local servers = {
@@ -30,7 +32,7 @@ local handlers = require("user.lsp.handlers")
 for _, server in ipairs(servers) do
 	local settings = {
 		capabitilies = handlers.capabitilies,
-		on_attach = handlers.on_attach
+		on_attach = handlers.on_attach,
 	}
 
 	local settings_ok, server_settings = pcall(require, "user.lsp.settings." .. server)
