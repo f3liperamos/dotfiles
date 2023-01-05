@@ -39,6 +39,9 @@ return {
 		-- nvim-cmp requires one snippet engine
 		{ "L3MON4D3/LuaSnip", version = "v1.*" },
 		"saadparwaiz1/cmp_luasnip",
+
+		--  Nice package, but do I want it?
+		-- "rafamadriz/friendly-snippets"
 	},
 	config = function()
 		-- ensure cmp and luasnip exists
