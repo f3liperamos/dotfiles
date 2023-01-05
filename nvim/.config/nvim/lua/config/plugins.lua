@@ -29,17 +29,6 @@ if not status_ok then
 	return
 end
 
--- disabling because when having the float window
--- the diff opens behind the floating window, not inside
---[[packer.init({
-	display = {
-		open_fn = function()
-			-- have packer use a popup window
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})]]
-
 -- start packer
 return packer.startup(function(use)
 	-- have packer manage itself
@@ -86,8 +75,7 @@ return packer.startup(function(use)
 
 	-- Bunch of cool snippets,
 	-- maybe worth to check it out
-	--[[use "rafamadriz/friendly-snippets"
-	]]
+	-- use "rafamadriz/friendly-snippets"
 
 	if packer_bootstrap then
 		require("packer").sync()
