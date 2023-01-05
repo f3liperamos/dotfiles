@@ -1,11 +1,24 @@
-local on_attach = function(_, bufnr)
-	--[[ Disabling omnifunc, it's cmp_nvim_lsp job now
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
-	end
+local lsp_formatting = function(bufnr)
+	vim.lsp.buf.format({
+		async = true,
+		filter = function(client)
+			return client.name ~= "tsserver"
+		end,
+		bufnr = bufnr,
+	})
+end
 
-	-- Enable completion triggered by <c-x><c-o>
-	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+local on_attach = function(client, bufnr)
+	--[[ Format on save not sure if I like it
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_clear_autocmds({ buffer = bufnr })
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			callback = function()
+				lsp_formatting(bufnr)
+			end,
+		})
+	end
 	]]
 
 	local function buf_set_keymap(...)
@@ -28,7 +41,7 @@ local on_attach = function(_, bufnr)
 	buf_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	buf_set_keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	buf_set_keymap("n", "<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+	buf_set_keymap("n", "<leader>fmt", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
 -- Enable auto signature help
@@ -64,12 +77,12 @@ lspconfig.sumneko_lua.setup({
 })
 
 local null_ls = require("null-ls")
-null_ls.setup({
-	sources = {
-		null_ls.builtins.formatting.stylua,
-		null_ls.builtins.formatting.prettierd,
-	},
-})
+local sources = {
+	--null_ls.builtins.formatting.eslint_d,
+	null_ls.builtins.formatting.prettierd,
+	null_ls.builtins.formatting.stylua,
+}
+null_ls.setup({ sources = sources, on_attach = on_attach })
 
 --[[
 -- Disable ltex for now
