@@ -29,18 +29,21 @@ if not status_ok then
 	return
 end
 
--- have packer use a popup window
-packer.init({
+-- disabling because when having the float window
+-- the diff opens behind the floating window, not inside
+--[[packer.init({
 	display = {
 		open_fn = function()
+			-- have packer use a popup window
 			return require("packer.util").float({ border = "rounded" })
 		end,
 	},
-})
+})]]
 
 -- start packer
 return packer.startup(function(use)
-	use("wbthomason/packer.nvim") -- have packer manage itself
+	-- have packer manage itself
+	use("wbthomason/packer.nvim")
 
 	-- themes
 	use({ "catppuccin/nvim", tag = "v0.2", as = "catppuccin" })
