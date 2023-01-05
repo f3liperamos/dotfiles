@@ -25,7 +25,22 @@ telescope.load_extension("fzy_native")
 -- Telescope keybindings
 local opts = { noremap = true }
 vim.api.nvim_set_keymap("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>fs", ":Telescope grep_string search=", opts)
-vim.api.nvim_set_keymap("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
-vim.api.nvim_set_keymap("n", "<Leader>hist", "<Cmd>Telescope oldfiles<CR>", opts)
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader>fs",
+	":Telescope grep_string search=",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader>gs",
+	"<Cmd>Telescope grep_string<CR>",
+	opts
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<Leader>hist",
+	"<Cmd>Telescope oldfiles<CR>",
+	opts
+)
 vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)

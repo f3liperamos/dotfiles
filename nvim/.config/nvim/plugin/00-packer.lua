@@ -24,7 +24,11 @@ return require("packer").startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 
 	-- Make buffers look like tabs
-	use({ "akinsho/bufferline.nvim", branch = "main", requires = "kyazdani42/nvim-web-devicons" })
+	use({
+		"akinsho/bufferline.nvim",
+		branch = "main",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 
 	-- gitsigns
 	use({
@@ -43,7 +47,10 @@ return require("packer").startup(function(use)
 	use("junegunn/fzf.vim")
 
 	-- Telescope related, trying fzy fuzzy algorithm
-	use({ "nvim-telescope/telescope-fzy-native.nvim", run = "git submodule update --init --recursive" })
+	use({
+		"nvim-telescope/telescope-fzy-native.nvim",
+		run = "git submodule update --init --recursive",
+	})
 
 	-- Others / Not categorized yet
 	use("editorconfig/editorconfig-vim")
