@@ -1,5 +1,5 @@
 local dependencies = { "cmp_nvim_lsp" }
-local status_ok, deps = require("config.protected-require")(
+local status_ok, deps = require("util.protected-require")(
 	dependencies,
 	"Failed to start lsp.handlers"
 )
@@ -48,8 +48,7 @@ set_keymap({
 
 local M = {}
 local cmp_nvim_lsp = unpack(deps)
-local capabitilies = vim.lsp.protocol.make_client_capabilities()
-M.capabitilies = cmp_nvim_lsp.default_capabilities(capabitilies)
+M.capabitilies = cmp_nvim_lsp.default_capabilities()
 M.on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	set_keymap({
