@@ -1,9 +1,9 @@
-require("user.options")
-require("user.keymaps")
-require("user.plugins")
-require("user.colorscheme")
-require("user.cmp")
-require("user.lsp")
+require("config.options")
+require("config.keymaps")
+require("config.plugins")
+require("config.colorscheme")
+require("config.cmp")
+require("config.lsp")
 
 -- Not sure how to set these without vim.cmd, not
 -- even sure if I need those

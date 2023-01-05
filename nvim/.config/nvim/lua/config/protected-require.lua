@@ -1,4 +1,4 @@
-local notify = require("user.notify")
+local notify = require("config.notify")
 
 local function require_safe(x, title)
 	local d = {}

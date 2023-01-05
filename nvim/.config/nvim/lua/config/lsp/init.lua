@@ -2,7 +2,7 @@
 local dependencies =
 	{ "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
 local status_ok, deps =
-	require("user.protected-require")(dependencies, "Failed to start LSP")
+	require("config.protected-require")(dependencies, "Failed to start LSP")
 if not status_ok then
 	return
 end
@@ -30,7 +30,7 @@ local servers = {
 
 mason_lspconfig.setup({ ensure_installed = servers })
 
-local handlers = require("user.lsp.handlers")
+local handlers = require("config.lsp.handlers")
 for _, server in ipairs(servers) do
 	local settings = {
 		capabitilies = handlers.capabitilies,
@@ -38,7 +38,7 @@ for _, server in ipairs(servers) do
 	}
 
 	local settings_ok, server_settings =
-		pcall(require, "user.lsp.settings." .. server)
+		pcall(require, "config.lsp.settings." .. server)
 	if settings_ok then
 		settings = vim.tbl_deep_extend("force", server_settings, settings)
 	end
@@ -56,4 +56,4 @@ mason_null_ls.setup({
 })
 
 -- then, setup null_ls
-require("user.lsp.null-ls")
+require("config.lsp.null-ls")

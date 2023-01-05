@@ -1,5 +1,5 @@
 local dependencies = { "cmp_nvim_lsp" }
-local status_ok, deps = require("user.protected-require")(
+local status_ok, deps = require("config.protected-require")(
 	dependencies,
 	"Failed to start lsp.handlers"
 )

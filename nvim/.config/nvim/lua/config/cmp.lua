@@ -1,7 +1,7 @@
 -- ensure cmp and luasnip exists
 local dependencies = { "cmp", "luasnip" }
 local status_ok, deps =
-	require("user.protected-require")(dependencies, "Failed to start cmp.lua")
+	require("config.protected-require")(dependencies, "Failed to start cmp.lua")
 if not status_ok then
 	return
 end
