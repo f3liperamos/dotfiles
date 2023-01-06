@@ -1,8 +1,5 @@
 local dependencies = { "null-ls" }
-local status_ok, deps = require("util.protected-require")(
-	dependencies,
-	"Failed to start null-ls.lua"
-)
+local status_ok, deps = require("util.protected-require")(dependencies, "Failed to start null-ls.lua")
 if not status_ok then
 	return
 end

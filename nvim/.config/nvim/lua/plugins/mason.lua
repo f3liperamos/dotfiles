@@ -8,12 +8,8 @@ return {
 	},
 	config = function()
 		-- Check if all dependencies are installed, otherwise exits early
-		local dependencies =
-			{ "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
-		local status_ok, deps = require("util.protected-require")(
-			dependencies,
-			"Failed to start LSP"
-		)
+		local dependencies = { "mason", "mason-lspconfig", "lspconfig", "mason-null-ls" }
+		local status_ok, deps = require("util.protected-require")(dependencies, "Failed to start LSP")
 		if not status_ok then
 			return
 		end
@@ -48,11 +44,9 @@ return {
 				on_attach = handlers.on_attach,
 			}
 
-			local settings_ok, server_settings =
-				pcall(require, "lsp.settings." .. server)
+			local settings_ok, server_settings = pcall(require, "lsp.settings." .. server)
 			if settings_ok then
-				settings =
-					vim.tbl_deep_extend("force", server_settings, settings)
+				settings = vim.tbl_deep_extend("force", server_settings, settings)
 			end
 
 			lspconfig[server].setup(settings)

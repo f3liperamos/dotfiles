@@ -14,10 +14,7 @@ return {
 				["warn"] = vim.log.levels.WARN,
 			}
 
-			vim.notify(
-				"nvim-notify not found, check installation",
-				mapping.error
-			)
+			vim.notify("nvim-notify not found, check installation", mapping.error)
 
 			return function(message, log_level, _)
 				vim.notify(message, mapping[log_level] or nil)
