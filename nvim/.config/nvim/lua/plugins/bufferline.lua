@@ -1,9 +1,13 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "v2.*",
-	dependecies = "kyazdani42/nvim-web-devicons",
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		{ "catppuccin/nvim", version = "v0.2", name = "catppuccin" },
+	},
 	config = function()
 		require("bufferline").setup({
+			highlights = require("catppuccin.groups.integrations.bufferline").get(),
 			options = {
 				separator_style = "slant",
 				numbers = function(opts)

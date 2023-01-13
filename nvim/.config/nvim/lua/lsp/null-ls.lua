@@ -6,11 +6,13 @@ end
 
 local null_ls = unpack(deps)
 
-local formatting = null_ls.builtins.formatting
+local builtins = null_ls.builtins
 null_ls.setup({
 	sources = {
-		formatting.stylua,
-		formatting.eslint_d,
-		formatting.prettierd,
+		builtins.code_actions.gitsigns,
+
+		builtins.formatting.stylua,
+		builtins.formatting.eslint_d,
+		builtins.formatting.prettierd,
 	},
 })
