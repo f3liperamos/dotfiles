@@ -18,9 +18,6 @@ if not status_ok then
 	end
 end
 
--- catppuccin base color
-notify.setup({ background_colour = "#1e1e2e" })
-
 vim.notify = notify
 
 return notify
