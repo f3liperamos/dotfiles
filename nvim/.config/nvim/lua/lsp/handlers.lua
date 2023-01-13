@@ -37,8 +37,8 @@ vim.diagnostic.config({
 })
 
 set_keymap({
-	["<leader>e"] = vim.diagnostic.open_float,
-	["<leader>q"] = vim.diagnostic.setloclist,
+	["<Leader>e"] = vim.diagnostic.open_float,
+	["<Leader>q"] = vim.diagnostic.setloclist,
 	["[d"] = vim.diagnostic.goto_prev,
 	["]d"] = vim.diagnostic.goto_next,
 })
@@ -50,12 +50,12 @@ M.on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	set_keymap({
 		["<C-k>"] = vim.lsp.buf.signature_help,
-		["<leader>D"] = vim.lsp.buf.type_definition,
-		["<leader>ca"] = vim.lsp.buf.code_action,
-		["<leader>fmt"] = function()
+		["<Leader>D"] = vim.lsp.buf.type_definition,
+		["<Leader>ca"] = vim.lsp.buf.code_action,
+		["<Leader>fmt"] = function()
 			vim.lsp.buf.format({ async = true })
 		end,
-		["<leader>rn"] = vim.lsp.buf.rename,
+		["<Leader>rn"] = vim.lsp.buf.rename,
 		["K"] = vim.lsp.buf.hover,
 		["gD"] = vim.lsp.buf.declaration,
 		["gd"] = vim.lsp.buf.definition,
