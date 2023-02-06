@@ -31,3 +31,6 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
+
+-- Mapping "*y to CTRL_C because I was never able to do it efficiently
+keymap('v', '<C-c>', '"*y<CR>', opts)
