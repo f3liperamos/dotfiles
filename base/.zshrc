@@ -14,6 +14,9 @@ autoload -Uz compinit && compinit
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
+# I said, the real editor
+export EDITOR='nvim'
+
 # Local specific overrides.
 LOCAL_RC=$HOME/.zshrc.local
 test -f $LOCAL_RC && source $LOCAL_RC
