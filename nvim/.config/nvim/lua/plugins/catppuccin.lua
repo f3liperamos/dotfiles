@@ -1,7 +1,7 @@
 return {
 	{
 		"catppuccin/nvim",
-		version = "v0.2",
+		version = "v1.4",
 		name = "catppuccin",
 		config = function()
 			local notify = require("util.notify")
