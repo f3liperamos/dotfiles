@@ -21,8 +21,7 @@ return {
 			end
 		end
 
-		-- catppuccin base color
-		notify.setup({ background_colour = "#1e1e2e" })
+		notify.setup()
 
 		vim.notify = notify
 

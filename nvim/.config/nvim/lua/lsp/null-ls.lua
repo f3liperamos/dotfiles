@@ -1,13 +1,5 @@
-local dependencies = { "null-ls" }
-local status_ok, deps = require("util.protected-require")(dependencies, "Failed to start null-ls.lua")
-if not status_ok then
-	return
-end
-
-local null_ls = unpack(deps)
-
-local builtins = null_ls.builtins
-null_ls.setup({
+local builtins = require("null-ls").builtins
+require("null-ls").setup({
 	sources = {
 		builtins.code_actions.gitsigns,
 

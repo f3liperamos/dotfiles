@@ -1,7 +1,11 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	version = "v0.5",
+	dependencies = { "tpope/vim-fugitive" },
+	version = "v0.6",
 	config = function()
-		require("gitsigns").setup()
+		require("gitsigns").setup({
+			current_line_blame = true,
+			trouble = true,
+		})
 	end,
 }

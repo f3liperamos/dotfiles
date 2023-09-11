@@ -33,11 +33,12 @@ return {
 		telescope.load_extension("fzf")
 
 		-- Telescope keybindings
+		local keymap_set = vim.keymap.set
 		local opts = { noremap = true }
-		vim.api.nvim_set_keymap("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
-		vim.api.nvim_set_keymap("n", "<Leader>fs", ":Telescope grep_string search=", opts)
-		vim.api.nvim_set_keymap("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
-		vim.api.nvim_set_keymap("n", "<Leader>hist", "<Cmd>Telescope oldfiles<CR>", opts)
-		vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)
+		keymap_set("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
+		keymap_set("n", "<Leader>fs", ":Telescope grep_string search=", opts)
+		keymap_set("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
+		keymap_set("n", "<Leader>hist", "<Cmd>Telescope oldfiles<CR>", opts)
+		keymap_set("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)
 	end,
 }

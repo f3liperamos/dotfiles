@@ -1,36 +1,36 @@
-local keymap = vim.api.nvim_set_keymap
+local keymap_set = vim.keymap.set
 local opts = { silent = true, noremap = true }
 
 -- set space to also trigger leader key
-keymap("", "<Space>", "<Leader>", {})
+keymap_set("n", "<Space>", "<Leader>", { remap = true })
 
 -- better (?) window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap_set("n", "<C-h>", "<C-w>h", opts)
+keymap_set("n", "<C-j>", "<C-w>j", opts)
+keymap_set("n", "<C-k>", "<C-w>k", opts)
+keymap_set("n", "<C-l>", "<C-w>l", opts)
 
 -- exit insert mode without having tendinitis
 -- and as a bonus, stop cursing the lack of the
 -- physical Esc key in the touchbar
-keymap("i", "jk", "<Esc>", opts)
-keymap("i", "kj", "<Esc>", opts)
+keymap_set("i", "jk", "<Esc>", opts)
+keymap_set("i", "kj", "<Esc>", opts)
 
 -- do not exit indent mode after single indent
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+keymap_set("v", "<", "<gv", opts)
+keymap_set("v", ">", ">gv", opts)
 
 -- prevent pasting to replace the register
-keymap("v", "p", '"_dP', opts)
+keymap_set("v", "p", '"_dP', opts)
 
 -- toggle file explorer
-keymap("n", "<C-e>", "<Cmd>Lexplore 30<CR>", opts)
+keymap_set("n", "<C-e>", "<Cmd>Lexplore 30<CR>", opts)
 
 -- center screen after scrolling, jumping matches
-keymap("n", "<C-u>", "<C-u>zz", opts)
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "n", "nzz", opts)
-keymap("n", "N", "Nzz", opts)
+keymap_set("n", "<C-u>", "<C-u>zz", opts)
+keymap_set("n", "<C-d>", "<C-d>zz", opts)
+keymap_set("n", "n", "nzz", opts)
+keymap_set("n", "N", "Nzz", opts)
 
 -- Mapping "*y to CTRL_C because I was never able to do it efficiently
-keymap('v', '<C-c>', '"*y<CR>', opts)
+keymap_set("v", "<C-c>", '"*y<CR>', opts)
