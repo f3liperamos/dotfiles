@@ -27,5 +27,8 @@ eval "$(fnm env)"
 # Start zoxide
 eval "$(zoxide init zsh)"
 
+# Start McFly
+eval "$(mcfly init zsh)"
+
 # And then finally, Starship
 eval "$(starship init zsh)"
