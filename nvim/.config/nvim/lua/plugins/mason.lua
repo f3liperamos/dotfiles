@@ -3,8 +3,8 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"jose-elias-alvarez/null-ls.nvim",
-		"jayp0521/mason-null-ls.nvim",
+		"jay-babu/mason-null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 	},
 	config = function()
 		-- Check if all dependencies are installed, otherwise exits early
