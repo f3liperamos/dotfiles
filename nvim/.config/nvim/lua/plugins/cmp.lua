@@ -86,7 +86,7 @@ return {
 				}),
 				["<CR>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
-					select = true,
+					select = false,
 				}),
 			}),
 			confirm_opts = {

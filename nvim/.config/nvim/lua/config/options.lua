@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 local options = {
 	background = "dark",
-	cmdheight = 2,
+	cmdheight = 1,
 	completeopt = { "menu", "menuone", "noinsert", "noselect" },
 	fileencoding = "utf-8",
 	ignorecase = true,
