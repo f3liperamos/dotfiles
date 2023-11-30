@@ -28,4 +28,4 @@ keymap_set("n", "n", "nzz", opts)
 keymap_set("n", "N", "Nzz", opts)
 
 -- Mapping "*y to CTRL_C
-keymap_set("v", "<C-c>", '"*y<CR>', opts)
+keymap_set("v", "<C-c>", '"*y', opts)
