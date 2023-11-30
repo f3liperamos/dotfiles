@@ -1,24 +1,23 @@
 return {
 	{
 		"catppuccin/nvim",
+		lazy = true,
 		version = "v1.*",
 		name = "catppuccin",
 		config = function()
 			require("catppuccin").setup({
 				integrations = {
 					cmp = true,
-					dashboard = true,
+					dap = { enabled = true, enable_ui = true },
+					flash = true,
 					gitsigns = true,
+					lsp_trouble = true,
 					mason = true,
+					mini = true,
 					notify = true,
-					nvimtree = true,
-					telescope = true,
+					telescope = { enabled = true },
 					treesitter = true,
 					which_key = true,
-
-					-- special integrations, check their .lua
-					bufferline = true,
-					fidget = true,
 				},
 			})
 
