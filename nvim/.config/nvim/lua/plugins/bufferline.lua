@@ -7,12 +7,12 @@ return {
 		"catppuccin",
 	},
 	keys = {
-		{ "[b",         "<Cmd>BufferLineCyclePrev<CR>",   desc = "Go to next buffer" },
-		{ "]b",         "<Cmd>BufferLineCycleNext<CR>",   desc = "Go to previous buffer" },
-		{ "[Tab",       "<Cmd>b#<CR>",                    desc = "Go to alternate buffer" },
-		{ "]Tab",       "<Cmd>b#<CR>",                    desc = "Go to alternate buffer" },
-		{ "gb",         "<Cmd>BufferLinePick<CR>",        desc = "Pick buffer" },
-		{ "<Leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other buffers" }
+		{ "[b", "<Cmd>BufferLineCyclePrev<CR>", desc = "Go to next buffer" },
+		{ "]b", "<Cmd>BufferLineCycleNext<CR>", desc = "Go to previous buffer" },
+		{ "[Tab", "<Cmd>b#<CR>", desc = "Go to alternate buffer" },
+		{ "]Tab", "<Cmd>b#<CR>", desc = "Go to alternate buffer" },
+		{ "gb", "<Cmd>BufferLinePick<CR>", desc = "Pick buffer" },
+		{ "<Leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other buffers" },
 	},
 	config = function()
 		require("bufferline").setup({
