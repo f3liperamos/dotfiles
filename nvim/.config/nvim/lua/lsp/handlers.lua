@@ -1,3 +1,5 @@
+---@param keymaps table<string, function> wrap the identifiers in brackets i.e.: ["string"] = value
+---@param opts table same as vim.keymap.set() opts
 local function keymap_set(keymaps, opts)
 	opts = opts or { noremap = true, silent = true }
 	for keymap, action in pairs(keymaps) do
@@ -26,11 +28,8 @@ local function lsp_highlight_document(client, bufnr)
 end
 
 vim.diagnostic.config({
-	--[[
-	-- disable the annoying text on the right side of the line
 	virtual_text = false,
-	]]
-	update_in_insert = true, -- check if this option makes larger codebases too slow
+	update_in_insert = false,
 })
 
 local M = {}
@@ -38,11 +37,8 @@ M.capabitilies = require("cmp_nvim_lsp").default_capabilities()
 M.on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	keymap_set({
-		["<C-k>"] = vim.lsp.buf.signature_help,
+		["<C-s>"] = vim.lsp.buf.signature_help,
 		["<Leader>ca"] = vim.lsp.buf.code_action,
-		["<Leader>fmt"] = function()
-			vim.lsp.buf.format({ async = true })
-		end,
 		["<Leader>rn"] = vim.lsp.buf.rename,
 		["K"] = vim.lsp.buf.hover,
 		["gd"] = vim.lsp.buf.definition,
