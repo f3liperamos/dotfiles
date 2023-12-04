@@ -1,10 +1,20 @@
 return {
 	{
 		"echasnovski/mini.pairs",
-		enabled = false,
+		version = "*",
+		event = "VeryLazy",
+		opts = {},
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = "*",
+		event = "VeryLazy",
+		opts = {},
 	},
 	{
 		"echasnovski/mini.surround",
+		version = "*",
+		event = "VeryLazy",
 		opts = {
 			mappings = {
 				add = "gza", -- Add surrounding in Normal and Visual modes
