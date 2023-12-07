@@ -1,9 +1,13 @@
----@param keymaps table<string, function> wrap the identifiers in brackets i.e.: ["string"] = value
+---@param keymaps table<string, table|fun()> wrap the identifiers in brackets i.e.: ["string"] = table
 ---@param opts table same as vim.keymap.set() opts
 local function keymap_set(keymaps, opts)
 	opts = opts or { noremap = true, silent = true }
-	for keymap, action in pairs(keymaps) do
-		vim.keymap.set("n", keymap, action, opts)
+	for keymap, rhs in pairs(keymaps) do
+		if type(rhs) == "function" then
+			vim.keymap.set("n", keymap, rhs, opts)
+		else
+			vim.keymap.set("n", keymap, rhs[1], vim.tbl_deep_extend("force", opts, { desc = rhs.desc }))
+		end
 	end
 end
 
@@ -44,8 +48,8 @@ M.on_attach = function(client, bufnr)
 		["gd"] = vim.lsp.buf.definition,
 		["gi"] = vim.lsp.buf.implementation,
 		["gr"] = vim.lsp.buf.references,
-		["[d"] = vim.diagnostic.goto_prev,
-		["]d"] = vim.diagnostic.goto_next,
+		["[d"] = { vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
+		["]d"] = { vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 	}, bufopts)
 
 	lsp_highlight_document(client, bufnr)
