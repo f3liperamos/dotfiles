@@ -10,8 +10,9 @@ return {
 		},
 		opts = {
 			ensure_installed = {
-				"prettierd",
 				"eslint_d",
+				"prettier",
+				"prettierd",
 				"stylua",
 			},
 		},
