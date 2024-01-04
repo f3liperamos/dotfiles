@@ -47,7 +47,7 @@ M.on_attach = function(client, bufnr)
 		["K"] = vim.lsp.buf.hover,
 		["gd"] = vim.lsp.buf.definition,
 		["gi"] = vim.lsp.buf.implementation,
-		["gr"] = vim.lsp.buf.references,
+		-- ["gr"] = vim.lsp.buf.references, -- Replacing with Trouble lsp_references
 		["[d"] = { vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
 		["]d"] = { vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 	}, bufopts)
