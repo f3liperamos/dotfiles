@@ -10,6 +10,7 @@ return {
 			css = { "prettierd" },
 			sass = { "prettierd" },
 			less = { "prettierd" },
+			markdown = { "prettierd" },
 		},
 	},
 	keys = {
