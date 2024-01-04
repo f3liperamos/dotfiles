@@ -1,8 +1,8 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "catppuccin" },
-	config = function()
-		require("lualine").setup({
+	opts = {
+		{
 			options = {
 				icons_enabled = false,
 				theme = "catppuccin",
@@ -12,6 +12,6 @@ return {
 					{ "filename", path = 1 },
 				},
 			},
-		})
-	end,
+		},
+	},
 }
