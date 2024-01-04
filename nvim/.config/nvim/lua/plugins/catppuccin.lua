@@ -14,7 +14,6 @@ return {
 					lsp_trouble = true,
 					mason = true,
 					mini = true,
-					notify = true,
 					telescope = { enabled = true },
 					treesitter = true,
 					which_key = true,
