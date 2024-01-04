@@ -2,6 +2,7 @@ return {
 
 	"nvim-telescope/telescope.nvim",
 	version = "0.1.*",
+	event = "VeryLazy",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -40,7 +41,7 @@ return {
 		keymap_set("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
 		keymap_set("n", "<Leader>fs", ":Telescope grep_string search=", opts)
 		keymap_set("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
-		keymap_set("n", "<Leader>hist", "<Cmd>Telescope oldfiles<CR>", opts)
+		keymap_set("n", "<Leader>h", "<Cmd>Telescope oldfiles<CR>", opts)
 		keymap_set("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)
 	end,
 }

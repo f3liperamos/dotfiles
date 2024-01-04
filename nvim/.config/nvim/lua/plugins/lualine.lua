@@ -1,6 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "catppuccin" },
+	event = "VeryLazy",
 	opts = {
 		{
 			options = {
