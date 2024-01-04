@@ -44,14 +44,8 @@ return {
 		-- "rafamadriz/friendly-snippets"
 	},
 	config = function()
-		-- ensure cmp and luasnip exists
-		local dependencies = { "cmp", "luasnip" }
-		local status_ok, deps = require("util.protected-require")(dependencies, "Failed to start cmp.lua")
-		if not status_ok then
-			return
-		end
-
-		local cmp, luasnip = unpack(deps)
+		local cmp = require("cmp")
+		local luasnip = require("luasnip")
 
 		cmp.setup({
 			snippet = {

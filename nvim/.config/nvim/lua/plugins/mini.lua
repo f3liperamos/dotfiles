@@ -15,16 +15,16 @@ return {
 		"echasnovski/mini.surround",
 		version = "*",
 		event = "VeryLazy",
-		opts = {
-			mappings = {
-				add = "gza", -- Add surrounding in Normal and Visual modes
-				delete = "gzd", -- Delete surrounding
-				find = "gzf", -- Find surrounding (to the right)
-				find_left = "<Leader>gzF", -- Find surrounding (to the left)
-				highlight = "gzh", -- Highlight surrounding
-				replace = "gzr", -- Replace surrounding
-				update_n_lines = "gzn", -- Update `n_lines`
-			},
-		},
+		opts = {},
+	},
+	{
+		"echasnovski/mini.notify",
+		version = false, -- No stable version yet
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("mini.notify").setup(opts)
+			vim.notify = require("mini.notify").make_notify(opts)
+		end,
 	},
 }
