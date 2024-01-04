@@ -1,81 +1,47 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	dependencies = "nvim-treesitter/nvim-treesitter-textobjects",
-	build = ":TSUpdate",
-	config = function()
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"bash",
-				"css",
-				"dockerfile",
-				"graphql",
-				"javascript",
-				"jsdoc",
-				"json",
-				"json5",
-				"jsonc",
-				"latex",
-				"lua",
-				"rust",
-				"tsx",
-				"typescript",
-			},
-			sync_install = false,
-			highlight = { enable = true },
-			indent = { enable = true },
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-Space>",
-					node_incremental = "<C-Space>",
-					scope_incremental = "<C-s>",
-					node_decremental = "<C-Backspace>",
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			--- https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
+			---@diagnostic disable-next-line: missing-fields
+			require("nvim-treesitter.configs").setup({
+				sync_install = false,
+				auto_install = true,
+				highlight = { enable = true },
+				indent = { enable = true },
+				additional_vim_regex_highlighting = false,
+				ensure_installed = {
+					"bash",
+					"css",
+					"dockerfile",
+					"graphql",
+					"javascript",
+					"jsdoc",
+					"json",
+					"json5",
+					"jsonc",
+					"latex",
+					"lua",
+					"rust",
+					"tsx",
+					"typescript",
 				},
-			},
-			textobjects = {
-				select = {
+				incremental_selection = {
 					enable = true,
-					lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
 					keymaps = {
-						-- You can use the capture groups defined in textobjects.scm
-						["aa"] = "@parameter.outer",
-						["ia"] = "@parameter.inner",
-						["af"] = "@function.outer",
-						["if"] = "@function.inner",
-						["ac"] = "@class.outer",
-						["ic"] = "@class.inner",
+						init_selection = "<C-Space>",
+						node_incremental = "<C-Space>",
+						scope_incremental = false,
+						node_decremental = "<Backspace>",
 					},
 				},
-				move = {
-					enable = true,
-					set_jumps = true, -- whether to set jumps in the jumplist
-					goto_next_start = {
-						["]m"] = "@function.outer",
-						["]]"] = "@class.outer",
-					},
-					goto_next_end = {
-						["]M"] = "@function.outer",
-						["]["] = "@class.outer",
-					},
-					goto_previous_start = {
-						["[m"] = "@function.outer",
-						["[["] = "@class.outer",
-					},
-					goto_previous_end = {
-						["[M"] = "@function.outer",
-						["[]"] = "@class.outer",
-					},
-				},
-				swap = {
-					enable = true,
-					swap_next = {
-						["<Leader>a"] = "@parameter.inner",
-					},
-					swap_previous = {
-						["<Leader>A"] = "@parameter.inner",
-					},
-				},
-			},
-		})
-	end,
+			})
+		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		opts = { multiline_threshold = 3 },
+	},
 }
