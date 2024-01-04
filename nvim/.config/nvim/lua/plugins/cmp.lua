@@ -30,6 +30,7 @@ return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
 		-- completion
+		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
@@ -37,20 +38,19 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 
 		-- nvim-cmp requires one snippet engine
-		{ "L3MON4D3/LuaSnip", version = "v1.*" },
+		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		"saadparwaiz1/cmp_luasnip",
 
-		--  Nice package, but do I want it?
-		-- "rafamadriz/friendly-snippets"
+		-- Snippets collection
+		"rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
 
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					luasnip.lsp_expand(args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			formatting = {
@@ -83,6 +83,7 @@ return {
 					select = false,
 				}),
 			}),
+
 			confirm_opts = {
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = false,
@@ -107,10 +108,7 @@ return {
 		})
 
 		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline({
-				["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-				["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-			}),
+			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
 				{ name = "cmdline" },
 				{ name = "path" },
