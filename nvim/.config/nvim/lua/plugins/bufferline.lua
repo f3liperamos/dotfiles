@@ -14,6 +14,7 @@ return {
 		{ "<Leader>bb", "<Cmd>BufferLinePick<CR>", desc = "Pick buffer [Bufferline]" },
 		{ "<Leader>bl", ":lua require('telescope.builtin').buffers()<CR>", desc = "List buffers [Bufferline]" },
 		{ "<Leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other buffers [Bufferline]" },
+		{ "<Leader>bd", "<Cmd>bd<CR>", desc = "Close buffer [Bufferline]" },
 	},
 	config = function()
 		require("bufferline").setup({
