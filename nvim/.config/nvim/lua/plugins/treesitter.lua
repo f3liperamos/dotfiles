@@ -23,6 +23,8 @@ return {
 					"jsonc",
 					"latex",
 					"lua",
+					"markdown",
+					"markdown_inline",
 					"rust",
 					"tsx",
 					"typescript",
