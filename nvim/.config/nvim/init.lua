@@ -14,8 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", { ui = { border = "single" } })
 
 --[[
--- Pending
-2. Change keybindings to `keys` property on lazy.nvim?
-3. Remove unnecessary protected calls from lazy configs. Probably not necessary anymore
-4. Cleanup migration from packer, re-check if there is any leftover
+TODO: 
+    - Setup dap
+    - Check if you can live without bufferline
+    - Try vimwiki
 --]]

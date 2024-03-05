@@ -11,7 +11,6 @@ return {
 					dap = { enabled = true, enable_ui = true },
 					flash = true,
 					gitsigns = true,
-					lsp_trouble = true,
 					mason = true,
 					mini = { enabled = true },
 					telescope = { enabled = true },

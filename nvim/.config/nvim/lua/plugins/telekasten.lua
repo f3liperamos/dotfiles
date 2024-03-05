@@ -1,5 +1,6 @@
 local home = vim.fn.expand("~/zettelkasten")
 return {
+	enabled = false,
 	"renerocksai/telekasten.nvim",
 	dependencies = { "nvim-telescope/telescope.nvim" },
 	opts = {

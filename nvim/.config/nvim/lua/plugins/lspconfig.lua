@@ -88,7 +88,7 @@ return {
 		}
 
 		require("mason").setup()
-		require("mason-tool-installer").setup({ ensure_installed = servers })
+		require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers) or {} })
 		require("mason-lspconfig").setup({
 			handlers = {
 				function(server_name)

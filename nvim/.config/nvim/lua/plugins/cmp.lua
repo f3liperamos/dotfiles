@@ -54,6 +54,9 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
 			formatting = {
 				format = function(entry, vim_item)
 					-- Concatenates the icons with the name of the item kind
@@ -69,9 +72,8 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				-- also testing ergonomics for k j item navigation
-				["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-				["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+				["<C-n>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+				["<C-p>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
 				["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
 				["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
 				["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -79,16 +81,8 @@ return {
 					i = cmp.mapping.abort(),
 					c = cmp.mapping.close(),
 				}),
-				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Replace,
-					select = false,
-				}),
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
-
-			confirm_opts = {
-				behavior = cmp.ConfirmBehavior.Replace,
-				select = false,
-			},
 			sources = {
 				{ name = "nvim_lua" },
 				{ name = "nvim_lsp" },

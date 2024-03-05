@@ -45,6 +45,6 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		event = "VeryLazy",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		opts = { multiline_threshold = 3 },
+		opts = { multiline_threshold = 1 },
 	},
 }
