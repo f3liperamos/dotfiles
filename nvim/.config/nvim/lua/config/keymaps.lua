@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
@@ -13,7 +13,7 @@ vim.keymap.set("v", "<", "<gv", { desc = "Indent left without exiting visual mod
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right without exiting visual mode" })
 
 vim.keymap.set("v", "<C-c>", '"*y', { desc = 'Copy selection to "* register' })
-vim.keymap.set("v", "p", '"_dP', { desc = 'Replace selection without yanking' })
+vim.keymap.set("v", "p", '"_dP', { desc = "Replace selection without yanking" })
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll down and centralize screen" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll up and centralize screen" })
