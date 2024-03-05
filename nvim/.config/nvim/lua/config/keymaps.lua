@@ -1,34 +1,24 @@
-local keymap_set = vim.keymap.set
-local opts = { silent = true, noremap = true }
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
----@param rhs table
-local extend_opts = function(rhs)
-	rhs = rhs or {}
-	return vim.tbl_deep_extend("force", opts, rhs)
-end
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to the left window" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to the down window" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to the up window" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to the right window" })
 
-keymap_set("v", "<C-c>", '"*y', extend_opts({ desc = 'Copy selection to "* register' }))
-keymap_set("n", "<C-h>", "<C-w>h", extend_opts({ desc = "Go to the left window" }))
-keymap_set("n", "<C-j>", "<C-w>j", extend_opts({ desc = "Go to the down window" }))
-keymap_set("n", "<C-k>", "<C-w>k", extend_opts({ desc = "Go to the up window" }))
-keymap_set("n", "<C-l>", "<C-w>l", extend_opts({ desc = "Go to the right window" }))
+vim.keymap.set("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+vim.keymap.set("i", "kj", "<Esc>", { desc = "Exit insert mode" })
 
--- set space to also trigger leader key
-keymap_set("n", "<Space>", "<Leader>", { remap = true })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent left without exiting visual mode" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent right without exiting visual mode" })
 
--- insert mode quick exit
-keymap_set("i", "jk", "<Esc>", opts)
-keymap_set("i", "kj", "<Esc>", opts)
+vim.keymap.set("v", "<C-c>", '"*y', { desc = 'Copy selection to "* register' })
+vim.keymap.set("v", "p", '"_dP', { desc = 'Replace selection without yanking' })
 
--- stay on visual mode when indenting
-keymap_set("v", "<", "<gv", opts)
-keymap_set("v", ">", ">gv", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll down and centralize screen" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll up and centralize screen" })
+vim.keymap.set("n", "n", "nzz", { desc = "Go to next search result and centralize screen" })
+vim.keymap.set("n", "N", "Nzz", { desc = "Go to previous search result and centralize screen" })
 
--- do not replace the register when pasting
-keymap_set("v", "p", '"_dP', opts)
-
--- center screen after scrolling, jumping matches
-keymap_set("n", "<C-u>", "<C-u>zz", opts)
-keymap_set("n", "<C-d>", "<C-d>zz", opts)
-keymap_set("n", "n", "nzz", opts)
-keymap_set("n", "N", "Nzz", opts)
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "<Esc> clears highlights when in normal mode" })
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })

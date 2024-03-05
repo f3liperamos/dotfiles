@@ -1,4 +1,5 @@
 return {
+	enabled = false,
 	"akinsho/bufferline.nvim",
 	event = "VeryLazy",
 	version = "v4.*",
@@ -8,13 +9,12 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = {
-		{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Go to previous buffer [Bufferline]" },
-		{ "<Tab>", "<Cmd>b#<CR>", desc = "Go to alternate buffer [Bufferline]" },
-		{ "<Leader>b", "<Cmd>BufferLinePick<CR>", desc = "Pick buffer [Bufferline]" },
-		{ "<Leader>bb", "<Cmd>BufferLinePick<CR>", desc = "Pick buffer [Bufferline]" },
-		{ "<Leader>bl", ":lua require('telescope.builtin').buffers()<CR>", desc = "List buffers [Bufferline]" },
-		{ "<Leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Close other buffers [Bufferline]" },
-		{ "<Leader>bd", "<Cmd>bd<CR>", desc = "Close buffer [Bufferline]" },
+		{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Bufferline: Go to previous buffer" },
+		{ "<Tab>", "<Cmd>b#<CR>", desc = "Bufferline: Go to alternate buffer" },
+		{ "<Leader>bb", "<Cmd>BufferLinePick<CR>", desc = "Bufferline: Pick buffer" },
+		{ "<Leader>bl", ":lua require('telescope.builtin').buffers()<CR>", desc = "Bufferline: [b]uffer [l]ist" },
+		{ "<Leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Bufferline: leave open this [b]ufffer [o]nly" },
+		{ "<Leader>bd", "<Cmd>bd<CR>", desc = "Bufferline: [b]uffer [d]elete" },
 	},
 	config = function()
 		require("bufferline").setup({

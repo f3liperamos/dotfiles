@@ -2,6 +2,7 @@ return {
 	{
 		"catppuccin/nvim",
 		version = "v1.*",
+		event = "VimEnter",
 		name = "catppuccin",
 		config = function()
 			require("catppuccin").setup({
@@ -12,7 +13,7 @@ return {
 					gitsigns = true,
 					lsp_trouble = true,
 					mason = true,
-					mini = true,
+					mini = { enabled = true },
 					telescope = { enabled = true },
 					treesitter = true,
 					which_key = true,

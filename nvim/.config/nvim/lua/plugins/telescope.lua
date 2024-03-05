@@ -1,47 +1,50 @@
 return {
-
 	"nvim-telescope/telescope.nvim",
 	version = "0.1.*",
-	event = "VeryLazy",
+	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
+		"nvim-telescope/telescope-ui-select.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		"folke/trouble.nvim",
 	},
 	config = function()
-		local actions = require("telescope.actions")
 		local telescope = require("telescope")
-		local trouble = require("trouble.providers.telescope")
 
 		telescope.setup({
 			defaults = {
 				sorting_strategy = "ascending",
 				layout_config = {
 					prompt_position = "top",
-					height = 0.9,
-					width = 0.9,
 				},
-				mappings = {
-					i = {
-						["<Esc>"] = actions.close,
-						["<C-k>"] = actions.move_selection_previous,
-						["<C-j>"] = actions.move_selection_next,
-						["<C-q>"] = trouble.open_selected_with_trouble,
-					},
-				},
+			},
+			extensions = {
+				["ui-select"] = require("telescope.themes").get_dropdown(),
 			},
 		})
 
-		telescope.load_extension("fzf")
+		pcall(telescope.load_extension, "fzf")
+		pcall(telescope.load_extension, "ui-select")
 
-		-- Telescope keybindings
-		local keymap_set = vim.keymap.set
-		local opts = { noremap = true }
-		keymap_set("n", "<Leader>p", "<Cmd>Telescope git_files<CR>", opts)
-		keymap_set("n", "<Leader>fs", ":Telescope grep_string search=", opts)
-		keymap_set("n", "<Leader>gs", "<Cmd>Telescope grep_string<CR>", opts)
-		keymap_set("n", "<Leader>h", "<Cmd>Telescope oldfiles<CR>", opts)
-		keymap_set("n", "<Leader>k", "<Cmd>Telescope keymaps<CR>", opts)
+		local builtin = require("telescope.builtin")
+		vim.keymap.set("n", "<Leader>sh", builtin.help_tags, { desc = "[s]earch [h]elp" })
+		vim.keymap.set("n", "<Leader>sk", builtin.keymaps, { desc = "[s]earch [k]eymaps" })
+		vim.keymap.set("n", "<Leader>sf", builtin.find_files, { desc = "[s]earch [f]iles" })
+		vim.keymap.set("n", "<Leader>ss", builtin.builtin, { desc = "[s]earch [s]elect Telescope" })
+		vim.keymap.set("n", "<Leader>sw", builtin.grep_string, { desc = "[s]earch current [w]ord" })
+		vim.keymap.set("n", "<Leader>sg", builtin.live_grep, { desc = "[s]earch by [g]rep" })
+		vim.keymap.set("n", "<Leader>sd", builtin.diagnostics, { desc = "[s]earch [d]iagnostics" })
+		vim.keymap.set("n", "<Leader>sr", builtin.resume, { desc = "[s]earch [r]esume" })
+		vim.keymap.set("n", "<Leader>s.", builtin.oldfiles, { desc = "[s.]earch recent files" })
+		vim.keymap.set("n", "<Leader><Leader>", builtin.buffers, { desc = "[ ] find existing buffers" })
+
+		vim.keymap.set("n", "<leader>/", function()
+			builtin.current_buffer_fuzzy_find({ previewer = false })
+		end, { desc = "[/] fuzzy search in current buffer" })
+
+		-- Shortcut for searching your neovim configuration files
+		vim.keymap.set("n", "<leader>sn", function()
+			builtin.find_files({ cwd = vim.fn.stdpath("config") })
+		end, { desc = "[s]earch [n]eovim config" })
 	end,
 }

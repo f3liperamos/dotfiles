@@ -9,7 +9,7 @@ return {
 			function()
 				require("flash").jump()
 			end,
-			desc = "Jump [Flash]",
+			desc = "Flash: [Ctrl-s]tart jump",
 		},
 		{
 			"S",
@@ -17,7 +17,7 @@ return {
 			function()
 				require("flash").treesitter()
 			end,
-			desc = "Treesitter [Flash]",
+			desc = "Flash: Treesitter [S]cope select",
 		},
 		{
 			"r",
@@ -25,15 +25,7 @@ return {
 			function()
 				require("flash").remote()
 			end,
-			desc = "Remote [Flash]",
-		},
-		{
-			"R",
-			mode = { "o", "x" },
-			function()
-				require("flash").treesitter_search()
-			end,
-			desc = "Treesitter Search [Flash]",
+			desc = "Flash: Execute [r]emote motion",
 		},
 	},
 }
