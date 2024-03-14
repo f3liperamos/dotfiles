@@ -43,7 +43,7 @@ return {
 		end, { desc = "[/] fuzzy search in current buffer" })
 
 		-- Shortcut for searching your neovim configuration files
-		vim.keymap.set("n", "<leader>sn", function()
+		vim.keymap.set("n", "<Leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[s]earch [n]eovim config" })
 	end,
