@@ -11,6 +11,7 @@ bindkey '^[[B' history-substring-search-down
 autoload -Uz compinit && compinit
 
 # FZF Defaults
+source <(fzf --zsh)
 export FZF_DEFAULT_OPTS='--reverse'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 
@@ -26,9 +27,3 @@ eval "$(fnm env)"
 
 # Start zoxide
 eval "$(zoxide init zsh)"
-
-# Start McFly
-eval "$(mcfly init zsh)"
-
-# And then finally, Starship
-eval "$(starship init zsh)"
