@@ -23,10 +23,7 @@ return {
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
 				map("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
 				map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ction")
-				map("K", vim.lsp.buf.hover, "Hover Documentation")
 				map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
-				map("[d", vim.diagnostic.goto_prev, "Go to previous diagnostic message")
-				map("]d", vim.diagnostic.goto_next, "Go to next diagnostic message")
 				map("<leader>e", vim.diagnostic.open_float, "Show diagnostic [e]rror messages")
 				map("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [q]uickfix list")
 
@@ -43,7 +40,7 @@ return {
 					})
 				end
 
-				if client.name == "tsserver" then
+				if client.name == "ts_ls" then
 					client.server_capabilities.documentFormattingProvider = false
 				end
 			end,
@@ -84,7 +81,7 @@ return {
 				},
 			},
 			rust_analyzer = {},
-			tsserver = {},
+			ts_ls = {},
 		}
 
 		require("mason").setup()

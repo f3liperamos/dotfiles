@@ -1,7 +1,7 @@
 return {
 	"lewis6991/gitsigns.nvim",
 	dependencies = { "tpope/vim-fugitive" },
-	version = "v0.7",
+	version = "v0.9",
 	opts = {
 		current_line_blame = true,
 		signs = {

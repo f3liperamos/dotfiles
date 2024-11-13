@@ -22,3 +22,5 @@ vim.keymap.set("n", "N", "Nzz", { desc = "Go to previous search result and centr
 
 vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "<Esc> clears highlights when in normal mode" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+vim.keymap.set("n", "<Tab>", "<Cmd>b#<CR>", { desc = "<Tab> switches between most recent buffers" })

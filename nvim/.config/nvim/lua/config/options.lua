@@ -26,7 +26,6 @@ local options = {
 	signcolumn = "yes",
 	smartcase = true,
 	smartindent = true,
-	termguicolors = true,
 	timeoutlen = 300,
 	undofile = true,
 	updatetime = 250,

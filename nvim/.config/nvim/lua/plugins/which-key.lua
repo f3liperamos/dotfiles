@@ -3,13 +3,13 @@ return {
 	event = "VimEnter",
 	config = function()
 		require("which-key").setup()
-		require("which-key").register({
-			["<Leader>c"] = { "[c]ode", _ = "which_key_ignore" },
-			["<Leader>d"] = { "[d]ocument", _ = "which_key_ignore" },
-			["<Leader>r"] = { "[r]ename", _ = "which_key_ignore" },
-			["<Leader>s"] = { "[s]earch", _ = "which_key_ignore" },
-			["<Leader>w"] = { "[w]orkspace", _ = "which_key_ignore" },
-			["<Leader>b"] = { "[b]uffers", _ = "which_key_ignore" },
+		require("which-key").add({
+			{ "<Leader>b", desc = "[b]uffers", hidden = true },
+			{ "<Leader>c", desc = "[c]ode", hidden = true },
+			{ "<Leader>d", desc = "[d]ocument", hidden = true },
+			{ "<Leader>r", desc = "[r]ename", hidden = true },
+			{ "<Leader>s", desc = "[s]earch", hidden = true },
+			{ "<Leader>w", desc = "[w]orkspace", hidden = true },
 		})
 	end,
 }

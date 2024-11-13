@@ -1,20 +1,11 @@
-local mini_starter_header = [[
-███████╗██╗   ██╗███╗   ██╗██╗  ██╗███████╗███╗   ██╗     ██████╗ ██████╗ ███████╗████████╗
-██╔════╝██║   ██║████╗  ██║██║ ██╔╝██╔════╝████╗  ██║    ██╔════╝██╔═══██╗██╔════╝╚══██╔══╝
-███████╗██║   ██║██╔██╗ ██║█████╔╝ █████╗  ██╔██╗ ██║    ██║     ██║   ██║███████╗   ██║   
-╚════██║██║   ██║██║╚██╗██║██╔═██╗ ██╔══╝  ██║╚██╗██║    ██║     ██║   ██║╚════██║   ██║   
-███████║╚██████╔╝██║ ╚████║██║  ██╗███████╗██║ ╚████║    ╚██████╗╚██████╔╝███████║   ██║   
-╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝     ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝   
-]]
-
 return {
 	"echasnovski/mini.nvim",
-	version = "*",
+	version = false,
 	config = function()
 		require("mini.ai").setup()
 		require("mini.indentscope").setup()
 		require("mini.pairs").setup()
-		require("mini.starter").setup({ header = mini_starter_header })
+		require("mini.icons").setup()
 		require("mini.surround").setup()
 
 		require("mini.statusline").setup()
