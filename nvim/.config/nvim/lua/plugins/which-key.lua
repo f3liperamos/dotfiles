@@ -1,8 +1,11 @@
 return {
 	"folke/which-key.nvim",
 	event = "VimEnter",
-	config = function()
-		require("which-key").setup()
+	opts = {
+		preset = 'helix'
+	},
+	config = function(_, opts)
+		require("which-key").setup(opts)
 		require("which-key").add({
 			{ "<Leader>b", desc = "[b]uffers", hidden = true },
 			{ "<Leader>c", desc = "[c]ode", hidden = true },
