@@ -38,6 +38,6 @@ tl;dr
 https://starship.rs/guide/#from-prebuilt-binary-with-shell
 
 # TODO
-- [ ] Create a script that syncs catpuccin theme github (kitty, allacrity, etc)
-- [ ] Drop startship
-- [ ] Remove unused nvim plugins
+- Create a script that syncs catpuccin theme github (kitty, allacrity, etc)
+- Drop startship, including mention at the README
+- Cleanup nvim plugins
