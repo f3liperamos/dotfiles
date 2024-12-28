@@ -6,7 +6,6 @@ return {
 			"mfussenegger/nvim-dap",
 			"williamboman/mason.nvim",
 		},
-		event = "VeryLazy",
 		opts = {
 			ensure_installed = { "node2", "chrome" },
 			handlers = {},
@@ -16,7 +15,6 @@ return {
 		enabled = false, -- Temporary until revamp
 		"rcarriga/nvim-dap-ui",
 		dependencies = { "rcarriga/nvim-dap-ui" },
-		event = "VeryLazy",
 		opts = {
 			controls = { element = "repl", enabled = false },
 		},
@@ -37,7 +35,6 @@ return {
 			"mfussenegger/nvim-dap",
 			"nvim-treesitter/nvim-treesitter",
 		},
-		event = "VeryLazy",
 		opts = {},
 	},
 }

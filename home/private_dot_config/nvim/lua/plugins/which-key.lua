@@ -1,8 +1,7 @@
 return {
 	"folke/which-key.nvim",
-	event = "VimEnter",
 	opts = {
-		preset = 'helix'
+		preset = "helix",
 	},
 	config = function(_, opts)
 		require("which-key").setup(opts)

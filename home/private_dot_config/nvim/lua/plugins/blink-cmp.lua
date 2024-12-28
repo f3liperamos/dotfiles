@@ -1,8 +1,7 @@
 return {
 	"saghen/blink.cmp",
-	lazy = false,
 	dependencies = "rafamadriz/friendly-snippets",
-	version = "v0.*",
+	version = "*",
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -10,7 +9,6 @@ return {
 		keymap = { preset = "default" },
 		completion = {
 			menu = {
-				scrollbar = false,
 				border = "single",
 				draw = {
 					columns = {
@@ -25,6 +23,13 @@ return {
 				auto_show_delay_ms = 0,
 				window = { border = "single" },
 			},
+		},
+		signature = {
+			enabled = true,
+			window = { border = "single" },
+		},
+		sources = {
+			default = { "lsp", "buffer", "path", "snippets" },
 		},
 		appearance = {
 			nerd_font_variant = "mono",
@@ -55,9 +60,6 @@ return {
 				Operator = "󰆕",
 				TypeParameter = "󰅲",
 			},
-		},
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
 		},
 	},
 	opts_extend = { "sources.default" },

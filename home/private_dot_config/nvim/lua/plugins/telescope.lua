@@ -1,7 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	version = "0.1.*",
-	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",

@@ -2,7 +2,7 @@
 require("config.keymaps")
 require("config.options")
 
--- bootstrap lazy.nvim
+-- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -18,6 +18,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Assign shortcut to open Lazy
+vim.keymap.set("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "Lazy: open f[l]oating window" })
 
 -- Load plugins
 require("lazy").setup({

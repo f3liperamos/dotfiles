@@ -20,7 +20,7 @@ end, {
 return {
 	{
 		"stevearc/conform.nvim",
-		version = "5.*",
+		version = "8.*",
 		opts = {
 			format_on_save = function(bufnr)
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -31,14 +31,14 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				rust = { "rustfmt" },
-				javascript = { "eslint_d", { "prettierd", "prettier" } },
-				typescript = { "eslint_d", { "prettierd", "prettier" } },
-				typescriptreact = { "eslint_d", { "prettierd", "prettier" } },
-				css = { { "prettierd", "prettier" } },
-				sass = { { "prettierd", "prettier" } },
-				less = { { "prettierd", "prettier" } },
-				markdown = { { "prettierd", "prettier" } },
-				html = { { "prettierd", "prettier" } },
+				javascript = { "eslint_d", "prettierd" },
+				typescript = { "eslint_d", "prettierd" },
+				typescriptreact = { "eslint_d", "prettierd" },
+				css = { "prettierd" },
+				sass = { "prettierd" },
+				less = { "prettierd " },
+				markdown = { "prettierd" },
+				html = { "prettierd" },
 			},
 		},
 		keys = {

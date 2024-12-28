@@ -60,6 +60,7 @@ return {
 
 		local servers = {
 			-- Linters / Formatters
+			eslint = {},
 			eslint_d = {},
 			prettier = {},
 			prettierd = {},
