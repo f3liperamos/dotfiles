@@ -1,4 +1,5 @@
 return {
+	enabled = false, -- testing fzf lua?
 	"nvim-telescope/telescope.nvim",
 	version = "0.1.*",
 	dependencies = {

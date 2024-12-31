@@ -34,6 +34,6 @@ require("lazy").setup({
 --[[
 TODO: 
     - Setup dap
-    - Check if you can live without bufferline
+    - Make a function to detect chezmoi and open config from there
     - Try vimwiki
 --]]

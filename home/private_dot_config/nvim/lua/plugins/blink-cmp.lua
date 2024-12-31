@@ -1,6 +1,5 @@
 return {
 	"saghen/blink.cmp",
-	dependencies = "rafamadriz/friendly-snippets",
 	version = "*",
 
 	---@module 'blink.cmp'
@@ -29,7 +28,7 @@ return {
 			window = { border = "single" },
 		},
 		sources = {
-			default = { "lsp", "buffer", "path", "snippets" },
+			default = { "lsp", "buffer", "path" },
 		},
 		appearance = {
 			nerd_font_variant = "mono",
