@@ -27,7 +27,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	ui = { border = "single" },
+	ui = { border = "solid" },
 	rocks = { enabled = false },
 })
 

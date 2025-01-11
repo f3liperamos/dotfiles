@@ -3,7 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			--- https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
+			-- https://github.com/nvim-treesitter/nvim-treesitter/issues/5297
 			---@diagnostic disable-next-line: missing-fields
 			require("nvim-treesitter.configs").setup({
 				sync_install = false,
@@ -14,7 +14,10 @@ return {
 				ensure_installed = {
 					"bash",
 					"css",
+					"diff",
 					"dockerfile",
+					"git_rebase",
+					"gitcommit",
 					"graphql",
 					"javascript",
 					"jsdoc",

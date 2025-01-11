@@ -8,6 +8,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 local options = {
 	background = "dark",
+	breakindent = true,
 	cmdheight = 1,
 	completeopt = { "menu", "menuone", "noinsert", "noselect" },
 	cursorline = true,
