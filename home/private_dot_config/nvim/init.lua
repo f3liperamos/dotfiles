@@ -31,6 +31,13 @@ require("lazy").setup({
 	rocks = { enabled = false },
 })
 
+-- Vimwiki globals
+vim.g.vimwiki_list = {{
+	path = '~/wiki',
+	syntax = 'markdown',
+	ext = 'md'
+}}
+
 --[[
 TODO: 
     - Setup dap
