@@ -2,8 +2,7 @@ return {
 	"catppuccin/nvim",
 	lazy = false,
 	priority = 1000,
-	enabled = false,
-	-- version = "v1.*", -- blink_cmp integration is not yet released with a tag
+	version = "v1.*",
 	name = "catppuccin",
 	config = function()
 		require("catppuccin").setup({

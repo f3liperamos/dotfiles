@@ -30,8 +30,12 @@ local options = {
 	timeoutlen = 300,
 	undofile = true,
 	updatetime = 250,
+	winborder = "solid",
 }
 
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end
+
+-- https://github.com/nvim-treesitter/nvim-treesitter/tree/main?tab=readme-ov-file#folds
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

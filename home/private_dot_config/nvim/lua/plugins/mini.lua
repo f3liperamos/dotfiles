@@ -6,6 +6,7 @@ return {
 		require("mini.icons").setup()
 		require("mini.indentscope").setup()
 		require("mini.surround").setup()
+		require("mini.diff").setup()
 
 		require("mini.statusline").setup()
 		require("mini.statusline").section_location = function()

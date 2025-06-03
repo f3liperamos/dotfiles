@@ -6,4 +6,5 @@ if status is-interactive
 	source "$HOME/.cargo/env.fish"
 	fnm env --shell fish | source
 	zoxide init fish | source
+	atuin init fish | source
 end

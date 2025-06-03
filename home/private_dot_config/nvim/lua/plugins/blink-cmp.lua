@@ -8,7 +8,6 @@ return {
 		keymap = { preset = "default" },
 		completion = {
 			menu = {
-				border = "solid",
 				draw = {
 					columns = {
 						{ "label", "label_description" },
@@ -21,12 +20,10 @@ return {
 				auto_show = true,
 				auto_show_delay_ms = 0,
 				treesitter_highlighting = false,
-				window = { border = "solid" },
 			},
 		},
 		signature = {
 			enabled = true,
-			window = { border = "solid" },
 		},
 		sources = {
 			default = { "lsp", "buffer", "path" },
