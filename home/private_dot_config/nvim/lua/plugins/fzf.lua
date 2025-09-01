@@ -24,6 +24,7 @@ return {
 		local fzf = require("fzf-lua")
 
 		fzf.setup(opts)
+		fzf.register_ui_select()
 
 		vim.keymap.set("n", "<Leader><Leader>", fzf.buffers, { desc = "[ ] find existing buffers" })
 		vim.keymap.set("n", "<Leader>s.", fzf.oldfiles, { desc = "[s.]earch recent files" })

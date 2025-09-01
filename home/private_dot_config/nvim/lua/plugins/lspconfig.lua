@@ -1,10 +1,10 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
-			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -55,7 +55,7 @@ return {
 							end,
 						})
 
-						vim.treesitter.start()
+						-- vim.treesitter.start()
 					end
 				end,
 			})
