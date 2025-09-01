@@ -1,6 +1,6 @@
 return {
 	"saghen/blink.cmp",
-	version = "*",
+	version = "1.*",
 
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
@@ -26,7 +26,7 @@ return {
 			enabled = true,
 		},
 		sources = {
-			default = { "lsp", "buffer", "path" },
+			default = { "lsp", "buffer" },
 		},
 		appearance = {
 			nerd_font_variant = "mono",

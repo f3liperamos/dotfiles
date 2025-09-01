@@ -1,101 +1,159 @@
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	},
-	config = function()
-		vim.api.nvim_create_autocmd("LspAttach", {
-			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-			callback = function(event)
-				local map = function(keys, func, desc)
-					vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-				end
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"mason-org/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
+		config = function()
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+				callback = function(event)
+					local map = function(keys, func, desc)
+						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
 
-				local picker = require("fzf-lua")
+					local picker = require("fzf-lua")
 
-				map("gd", picker.lsp_definitions, "[g]oto [d]efinition")
-				map("gD", picker.lsp_declarations, "[g]oto [D]eclaration")
-				map("gr", picker.lsp_references, "[g]oto [r]eferences")
-				map("gI", picker.lsp_implementations, "[g]oto [I]mplementation")
-				map("<leader>gF", picker.lsp_finder, "[g]oto [F]inder")
-				map("<leader>D", picker.lsp_typedefs, "Type [D]efinition")
-				map("<leader>ca", picker.lsp_code_actions, "[c]ode [a]ction")
-				map("<leader>ds", picker.lsp_document_symbols, "[d]ocument [s]ymbols")
-				map("<leader>ws", picker.lsp_workspace_symbols, "[w]orkspace [s]ymbols")
-				map("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
-				map("<leader>e", vim.diagnostic.open_float, "Show diagnostic [e]rror messages")
-				map("<leader>q", vim.diagnostic.setloclist, "Open diagnostic [q]uickfix list")
+					-- Prefix all lsp functions with `gr`, to make it closer or same to the defaults
+					map("grd", picker.lsp_definitions, "goto [d]efinition")
+					map("grD", picker.lsp_declarations, "goto [D]eclaration")
+					map("grr", picker.lsp_references, "goto [r]eferences")
+					map("gri", picker.lsp_implementations, "goto [i]mplementation")
+					map("grF", picker.lsp_finder, "open [F]inder")
+					map("grt", picker.lsp_typedefs, "goto [t]ype definition")
+					map("grs", picker.lsp_document_symbols, "open document [s]ymbols")
+					map("gra", picker.lsp_code_actions, "code [a]ction")
+					map("grn", vim.lsp.buf.rename, "[r]e[n]ame")
+					map("grq", vim.diagnostic.setloclist, "open diagnostics in [q]uickfix list")
 
-				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-						buffer = event.buf,
-						group = highlight_augroup,
-						callback = vim.lsp.buf.document_highlight,
-					})
+					local client = vim.lsp.get_client_by_id(event.data.client_id)
+					if
+						client
+						and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+					then
+						local highlight_augroup =
+							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.document_highlight,
+						})
 
-					vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-						buffer = event.buf,
-						group = highlight_augroup,
-						callback = vim.lsp.buf.clear_references,
-					})
+						vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+							buffer = event.buf,
+							group = highlight_augroup,
+							callback = vim.lsp.buf.clear_references,
+						})
 
-					-- Why inside the client.supports_mthod condition: https://github.com/nvim-lua/kickstart.nvim/pull/900
-					vim.api.nvim_create_autocmd("LspDetach", {
-						group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-						callback = function(event2)
-							vim.lsp.buf.clear_references()
-							vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-						end,
-					})
-				end
-			end,
-		})
+						vim.api.nvim_create_autocmd("LspDetach", {
+							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+							callback = function(event2)
+								vim.lsp.buf.clear_references()
+								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+							end,
+						})
 
-		vim.diagnostic.config({
-			virtual_text = false,
-			update_in_insert = false,
-			float = {
-				border = "solid",
-			},
-		})
+						vim.treesitter.start()
+					end
+				end,
+			})
 
-		local servers = {
-			-- Linters / Formatters
-			eslint = {},
-			eslint_d = {},
-			prettier = {},
-			prettierd = {},
-			stylua = {},
+			vim.diagnostic.config({
+				virtual_text = false,
+				update_in_insert = false,
+			})
 
-			-- LSPs
-			cssls = {},
-			html = {},
-			jsonls = {},
-			lua_ls = {
-				settings = {
-					Lua = {
-						runtime = { version = "LuaJIT" },
-						diagnostics = { globals = { "vim" } },
-						workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
-						telemetry = { enable = false },
+			local servers = {
+				-- Linters / Formatters
+				biome = {},
+				eslint = {},
+				eslint_d = {},
+				prettier = {},
+				prettierd = {},
+				stylelint = {},
+				stylua = {},
+
+				-- LSPs
+				bashls = {},
+				cssls = {},
+				harper_ls = {},
+				html = {},
+				jsonls = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							diagnostics = { globals = { "vim" } },
+							workspace = {
+								checkThirdParty = false,
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = { enable = false },
+						},
 					},
 				},
-			},
-			rust_analyzer = {},
-			ts_ls = {},
-		}
+				rust_analyzer = {},
+				vtsls = {},
+			}
 
-		require("mason-tool-installer").setup({ ensure_installed = vim.tbl_keys(servers or {}) })
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				local server = servers[server_name] or {}
-				server.capabilities = require("blink.cmp").get_lsp_capabilities(server.capabilities)
-				require("lspconfig")[server_name].setup(server)
-			end,
-		})
-	end,
+			local ensure_installed = vim.tbl_keys(servers or {})
+			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
+			---@type MasonLspconfigSettings
+			---@diagnostic disable-next-line: missing-fields
+			require("mason-lspconfig").setup({ automatic_enable = ensure_installed })
+			for server_name, config in pairs(servers) do
+				vim.lsp.config(server_name, config)
+			end
+		end,
+	},
+	{
+		"mfussenegger/nvim-lint",
+		config = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
+				bash = { "bash" },
+				javascript = { "eslint_d" },
+				typescript = { "eslint_d" },
+				typescriptreact = { "eslint_d" },
+			}
+
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+				group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
+	},
+	{
+		"stevearc/conform.nvim",
+		version = "9.*",
+		opts = {
+			format_on_save = false,
+			formatters_by_ft = {
+				css = { "eslint_d", "prettierd", stop_after_first = true },
+				html = { "prettierd" },
+				javascript = { "eslint_d", "prettierd", stop_after_first = true },
+				less = { "stylelint" },
+				lua = { "stylua" },
+				markdown = { "prettierd" },
+				rust = { "rustfmt" },
+				sass = { "stylelint" },
+				typescript = { "eslint_d", "prettierd", stop_after_first = true },
+				typescriptreact = { "eslint_d", "prettierd", stop_after_first = true },
+			},
+		},
+		keys = {
+			{
+				"<Leader>fmt",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				mode = { "n", "x" },
+				desc = "Conform: [f]or[m]a[t] buffer",
+			},
+		},
+	},
 }

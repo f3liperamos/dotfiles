@@ -1,11 +1,3 @@
--- autocommand to reload options.lua when saving
--- clear autogroup first to prevent it running multiple times
-vim.api.nvim_create_autocmd("BufWritePost", {
-	group = vim.api.nvim_create_augroup("dotfiles-options", { clear = true }),
-	pattern = "options.lua",
-	command = "source <afile>",
-})
-
 local options = {
 	background = "dark",
 	breakindent = true,
