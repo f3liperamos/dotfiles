@@ -23,7 +23,7 @@
 
 > $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-Install zellij and tealdeer using cargo
+Install zellij, tealdeer, and tree-sitter-cli using cargo
 
 # Applying the dotfiles
 
