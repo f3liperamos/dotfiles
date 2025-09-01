@@ -2,8 +2,13 @@
 export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
 
 # zsh plugins
+{{ if eq .chezmoi.os "darwin" -}}
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+{{ else if eq .chezmoi.os "linux" -}}
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+{{ end -}}
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
