@@ -8,7 +8,6 @@ return {
 		require("mini.indentscope").setup()
 
 		require("mini.notify").setup()
-		vim.notify = require("mini.notify").make_notify()
 
 		require("mini.statusline").setup()
 		require("mini.statusline").section_location = function()

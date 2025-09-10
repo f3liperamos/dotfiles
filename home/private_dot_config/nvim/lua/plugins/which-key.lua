@@ -2,6 +2,8 @@ return {
 	"folke/which-key.nvim",
 	opts = {
 		preset = "helix",
+		-- TODO: Workaround till https://github.com/folke/which-key.nvim/issues/967
+		show_help = false,
 	},
 	config = function(_, opts)
 		require("which-key").setup(opts)
