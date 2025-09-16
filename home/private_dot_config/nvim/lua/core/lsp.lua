@@ -1,11 +1,14 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter/tree/main?tab=readme-ov-file#highlighting
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "<filetype>" },
+	group = vim.api.nvim_create_augroup("EnableTreesitterHighlighting", { clear = true }),
+	desc = "Try to enable tree-sitter syntax highlighting",
+	pattern = "*", -- run on *all* filetypes
 	callback = function()
-		vim.treesitter.start()
+		pcall(function()
+			vim.treesitter.start()
+		end)
 	end,
 })
-
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
