@@ -184,7 +184,6 @@ map_leader("v", "fw", "<Cmd>FzfLua grep_visual<CR>", "Search selected")
 -- Git mappings ===============================================================
 map_leader("n", "gg", "<Cmd>0G<CR>", "Open fugitive")
 map_leader("n", "go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle Overlay")
-map_leader({ "n", "x" }, "gs", "<Cmd>lua MiniDiff.show_at_cursor()<CR>", "Show at cursor | Show at Selection")
 
 -- LSP Mappings ===============================================================
 map_leader("n", "lD", vim.lsp.buf.declaration, "Declaration")
