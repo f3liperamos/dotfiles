@@ -74,6 +74,7 @@ return {
 				prettierd = {},
 				stylelint = {},
 				stylua = {},
+				kdlfmt = {},
 
 				-- LSPs
 				bashls = {},
