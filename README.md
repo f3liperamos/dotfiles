@@ -1,11 +1,24 @@
 # Bare minimum utilities I like to have
 
-> $ brew install tree git curl ripgrep fd tmux fzf lua lua-language-server neovim less zoxide eza fnm kitty parallel atuin fish
+> $ brew install tree git curl ripgrep fd tmux fzf lua lua-language-server neovim less zoxide eza fnm kitty parallel fish
 
 ## fnm and zoxide needs eval
 
+Both fnm and zoxide need to eval or source the script. Maybe chezmoi is already configured
+to include those for kitty or alacrity. Double check later
+
 - https://github.com/Schniz/fnm?tab=readme-ov-file#zsh
 - https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#configuration
+
+## atuin
+
+It is better to install atuin using the script rather than package manager, so it proper sets the `.atuin` folder
+
+- https://docs.atuin.sh/guide/installation/
+
+## Fonts
+
+- https://github.com/be5invis/Iosevka
 
 ## Do I really need those?
 
