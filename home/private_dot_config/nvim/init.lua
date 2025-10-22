@@ -282,22 +282,36 @@ require("lazy").setup({
 				{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 			},
 			opts = {
+				---@type vim.diagnostic.Opts
 				diagnostics = {
-					-- Show signs on top of any other sign, but only for warnings and errors
-					signs = { priority = 9999, severity = { min = "WARN", max = "ERROR" } },
-
-					-- Show all diagnostics as underline (for their messages type `<Leader>ld`)
-					underline = { severity = { min = "HINT", max = "ERROR" } },
-
-					-- Show more details immediately for errors on the current line
-					virtual_lines = false,
+					signs = {
+						priority = 9999, -- Show signs on top of any other sign, but only for warnings and errors
+						severity = {
+							min = "WARN",
+							max = "ERROR",
+						},
+					},
+					underline = {
+						severity = {
+							min = "HINT",
+							max = "ERROR",
+						},
+					},
+					virtual_lines = {
+						current_line = false,
+						severity = {
+							min = "ERROR",
+							max = "ERROR",
+						},
+					},
 					virtual_text = {
 						current_line = true,
-						severity = { min = "ERROR", max = "ERROR" },
+						severity = {
+							min = "HINT",
+							max = "WARN",
+						},
 					},
-
-					-- Don't update diagnostics when typing
-					update_in_insert = false,
+					update_in_insert = false, -- Don't update diagnostics when typing
 				},
 				languages = {
 					"bash",
@@ -480,9 +494,9 @@ require("lazy").setup({
 						},
 					},
 					documentation = { auto_show = true },
-					signature = {
-						enabled = true,
-					},
+				},
+				signature = {
+					enabled = true,
 				},
 				sources = {
 					default = { "lsp", "path", "snippets", "buffer" },
