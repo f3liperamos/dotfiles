@@ -11,6 +11,7 @@ if status is-interactive
 	{{ if eq .chezmoi.os "darwin" -}}
 	if test -d (brew --prefix)"/share/fish/completions"
 		set -p fish_complete_path (brew --prefix)/share/fish/completions
+		set -gx DOTNET_CLI_TELEMETRY_OPTOUT 1
 	end
 
 	if test -d (brew --prefix)"/share/fish/vendor_completions.d"

@@ -188,7 +188,6 @@ map_leader("n", "go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle Overlay"
 -- LSP Mappings ===============================================================
 map_leader("n", "lD", vim.lsp.buf.declaration, "Declaration")
 map_leader("n", "lR", vim.lsp.buf.rename, "Rename")
-map_leader("n", "la", vim.lsp.buf.code_action, "code action")
 map_leader("n", "ld", vim.lsp.buf.definition, "Definition")
 map_leader("n", "lh", vim.lsp.buf.hover, "Hover")
 map_leader("n", "li", vim.lsp.buf.implementation, "Implementation")
@@ -196,11 +195,26 @@ map_leader("n", "lq", vim.diagnostic.setloclist, "Send diagnostic to quickfix")
 map_leader("n", "lr", vim.lsp.buf.references, "References")
 map_leader("n", "ls", vim.lsp.buf.document_symbol, "document symbols")
 map_leader("n", "lt", vim.lsp.buf.type_definition, "Type definition")
+map_leader({ "n", "x" }, "la", vim.lsp.buf.code_action, "code action")
 map_leader({ "n", "x" }, "lf", "<Cmd>lua require('conform').format({lsp_fallback = true})<CR>", "Format")
+
+local toggleVirtualLines = function()
+	local new_config = not vim.diagnostic.config().virtual_lines
+	vim.diagnostic.config({ virtual_lines = new_config })
+end
+map_leader("n", "lD", toggleVirtualLines, "Toggle virtual lines")
 
 -- Terminal Mappings ==========================================================
 map_leader("n", "tT", "<Cmd>horizontal terminal<CR>", "Terminal (horizontal)")
 map_leader("n", "tt", "<Cmd>vertical terminal<CR>", "Terminal (vertical)")
+
+-- ============================================================================
+-- For mappings defined directly at `plugin.setup(config)`, or default mappings
+-- ============================================================================
+
+--[[
+	mini.surround: Go to *mini.surround.mappings*
+--]]
 
 -- ============================================================================
 -- ============================== Plugins =====================================
@@ -247,6 +261,9 @@ require("lazy").setup({
 						["<F2>"] = "toggle-fullscreen",
 					},
 				},
+				lsp = {
+					code_actions = { previewer = false },
+				},
 			},
 			config = function(_, opts)
 				local fzf = require("fzf-lua")
@@ -256,7 +273,10 @@ require("lazy").setup({
 		},
 
 		{
-			"ggandor/leap.nvim",
+			-- "ggandor/leap.nvim", – can't ssh or HTTPS clone via Codeberg, using mirror listed at the GitHub readme instead. Otherwise, I have to download an unpack it manually to ~/projects/ directory
+			-- https://github.com/ggandor/leap.nvim?tab=readme-ov-file
+			-- dir = "~/projects/leap.nvim",
+			url = "https://git.disroot.org/andyg/leap.nvim",
 			config = function()
 				map({ "n", "x", "o" }, "s", "<Plug>(leap)")
 				map("n", "S", "<Plug>(leap-from-window)")
@@ -297,19 +317,8 @@ require("lazy").setup({
 							max = "ERROR",
 						},
 					},
-					virtual_lines = {
-						current_line = false,
-						severity = {
-							min = "ERROR",
-							max = "ERROR",
-						},
-					},
 					virtual_text = {
 						current_line = true,
-						severity = {
-							min = "HINT",
-							max = "WARN",
-						},
 					},
 					update_in_insert = false, -- Don't update diagnostics when typing
 				},
@@ -348,6 +357,7 @@ require("lazy").setup({
 					-- LSPs
 					bashls = {},
 					cssls = {},
+					stylelint_lsp = {},
 					harper_ls = {},
 					html = {},
 					jsonls = {},
@@ -527,17 +537,20 @@ require("lazy").setup({
 			opts = {
 				format_on_save = false,
 				formatters_by_ft = {
-					css = { "biome", "eslint_d", "prettierd", stop_after_first = true },
+					css = { "stylelint", "prettierd", stop_after_first = true },
 					html = { "prettierd" },
-					javascript = { "biome", "eslint_d", "prettierd", stop_after_first = true },
+					javascript = { "eslint_d", "prettierd", stop_after_first = true },
+					kdl = { "kdlfmt" },
 					less = { "stylelint" },
 					lua = { "stylua" },
 					markdown = { "prettierd" },
 					rust = { "rustfmt" },
 					sass = { "stylelint" },
-					typescript = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-					typescriptreact = { "biome", "eslint_d", "prettierd", stop_after_first = true },
-					kdl = { "kdlfmt" },
+					scss = { "stylelint" },
+					typescript = { "eslint_d", stop_after_first = true },
+					typescriptreact = { "eslint_d", stop_after_first = true },
+					-- typescript = { "eslint", "prettierd", stop_after_first = true },
+					-- typescriptreact = { "eslint", "prettierd", stop_after_first = true },
 				},
 			},
 		},
@@ -596,7 +609,7 @@ require("lazy").setup({
 					return "%2l:%-2v"
 				end
 
-				-- TODO: Review surround shortcuts
+				-- *mini.surround.mappings*
 				require("mini.surround").setup({
 					mappings = {
 						add = "<Leader>sa", -- Add surrounding in Normal and Visual modes
