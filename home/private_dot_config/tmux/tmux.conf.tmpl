@@ -1,3 +1,5 @@
+# vim:set ft=tmux:
+
 # unbind default prefix and set it to ctrl-a
 unbind C-b
 set-option -g prefix C-a
@@ -31,11 +33,56 @@ set-option -g focus-events on
 # forcing tmux to use screen-256color
 set-option -g default-terminal "screen-256color"
 
-# sets default shell when opening new panes or sessions
+# makes window numbers start with 1; Better to navigate
+set-option -g base-index 1
 
+# Styling
+
+## Theme ~~> Catppuccin (Mocha)
+set-option -ogq @thm_bg "#1e1e2e"
+set-option -ogq @thm_fg "#cdd6f4"
+
+### Colors
+set-option -ogq @thm_rosewater "#f5e0dc"
+set-option -ogq @thm_flamingo "#f2cdcd"
+set-option -ogq @thm_pink "#f5c2e7"
+set-option -ogq @thm_mauve "#cba6f7"
+set-option -ogq @thm_red "#f38ba8"
+set-option -ogq @thm_maroon "#eba0ac"
+set-option -ogq @thm_peach "#fab387"
+set-option -ogq @thm_yellow "#f9e2af"
+set-option -ogq @thm_green "#a6e3a1"
+set-option -ogq @thm_teal "#94e2d5"
+set-option -ogq @thm_sky "#89dceb"
+set-option -ogq @thm_sapphire "#74c7ec"
+set-option -ogq @thm_blue "#89b4fa"
+set-option -ogq @thm_lavender "#b4befe"
+
+### Surfaces and overlays
+set-option -ogq @thm_subtext_1 "#a6adc8"
+set-option -ogq @thm_subtext_0 "#bac2de"
+set-option -ogq @thm_overlay_2 "#9399b2"
+set-option -ogq @thm_overlay_1 "#7f849c"
+set-option -ogq @thm_overlay_0 "#6c7086"
+set-option -ogq @thm_surface_2 "#585b70"
+set-option -ogq @thm_surface_1 "#45475a"
+set-option -ogq @thm_surface_0 "#313244"
+set-option -ogq @thm_mantle "#181825"
+set-option -ogq @thm_crust "#11111b"
+
+## Options
+set-option -g status-position top
+set-option -g status-left-length 100
+set-option -g status-style "fg=#{@thm_fg},bg=#{@thm_bg}"
+set-option -g status-left " #[fg=#{@thm_surface_2}]   #S ~ "
+set-option -g window-status-format "#[fg=#{@thm_subtext_1}]#I:#W"
+set-option -g window-status-current-format "#[fg=#{@thm_green},bold,underscore]#I:#W"
+set-option -g window-status-separator " #[fg=#{@thm_surface_2}]| "
+set-option -g status-right "%Y-%m-%d %H:%M"
+
+# sets default shell when opening new panes or sessions
 {{ if eq .chezmoi.os "darwin" -}}
 set-option -g default-shell "/opt/homebrew/bin/fish"
 {{ else if eq .chezmoi.os "linux" -}}
 set-option -g default-shell "/usr/bin/fish"
 {{ end -}}
-
