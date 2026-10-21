@@ -79,6 +79,7 @@ set-option -g window-status-format "#[fg=#{@thm_subtext_1}]#I:#W"
 set-option -g window-status-current-format "#[fg=#{@thm_green},bold,underscore]#I:#W"
 set-option -g window-status-separator " #[fg=#{@thm_surface_2}]| "
 set-option -g status-right "%Y-%m-%d %H:%M"
+set-option -g pane-border-format 'bottom'
 
 # sets default shell when opening new panes or sessions
 {{ if eq .chezmoi.os "darwin" -}}
