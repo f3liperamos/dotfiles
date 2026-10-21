@@ -685,5 +685,6 @@ require("lazy").setup({
 		-- Extras =============================================================
 		{ "tpope/vim-fugitive" },
 		{ "m4xshen/hardtime.nvim", lazy = false, dependencies = { "MunifTanjim/nui.nvim" }, opts = {} },
+		{ "OXY2DEV/markview.nvim", opts = {} },
 	},
 })
