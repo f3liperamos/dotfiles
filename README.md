@@ -1,15 +1,28 @@
 # Bare minimum utilities I like to have
 
-> $ brew install tree git curl ripgrep fd stow tmux fzf lua lua-language-server neovim less zoxide eza fnm kitty parallel
+> $ brew install tree git curl ripgrep fd tmux fzf lua lua-language-server neovim less zoxide eza fnm kitty parallel fish
 
 ## fnm and zoxide needs eval
+
+Both fnm and zoxide need to eval or source the script. Maybe chezmoi is already configured
+to include those for kitty or alacrity. Double check later
 
 - https://github.com/Schniz/fnm?tab=readme-ov-file#zsh
 - https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#configuration
 
+## atuin
+
+It is better to install atuin using the script rather than package manager, so it proper sets the `.atuin` folder
+
+- https://docs.atuin.sh/guide/installation/
+
+## Fonts
+
+- https://github.com/be5invis/Iosevka
+
 ## Do I really need those?
 
-> $ brew install bat git-delta gh mcfly
+> $ brew install bat git-delta gh
 
 ## If git-delta is really needed, read the docs
 
@@ -23,21 +36,22 @@
 
 > $ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+Install zellij, tealdeer, and tree-sitter-cli using cargo
+
 # Applying the dotfiles
 
-Use [stow](https://www.gnu.org/software/stow)
+Use [chezmoi](https://www.chezmoi.io/install/#one-line-package-install)
 
-> $ man stow
+> sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
 
-tl;dr
+Create a configuration file and add required variables
 
-> $ stow -Rv \<folder\>
+> mkdir -p $HOME/.config/chezmoi/ && touch $HOME/.config/chezmoi/chezmoi.toml
 
-# Starship Shell
+Init
 
-https://starship.rs/guide/#from-prebuilt-binary-with-shell
+> chezmoi init git@github.com:f3liperamos/dotfiles.git --branch chezmoi
 
 # TODO
-- [ ] Create a script that syncs catpuccin theme github (kitty, allacrity, etc)
-- [ ] Drop startship
-- [ ] Remove unused nvim plugins
+
+- Create a script that syncs catpuccin theme github (kitty, allacrity, etc)
