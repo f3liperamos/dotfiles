@@ -1,3 +1,11 @@
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.atuin/bin
+
+{{- if eq .chezmoi.os "darwin" }}
+fish_add_path /opt/homebrew/bin
+{{- end }}
+
 # Commands to run in interactive sessions can go here
 if status is-interactive
 	set -g fish_key_bindings fish_vi_key_bindings
@@ -17,5 +25,5 @@ if status is-interactive
 	if test -d (brew --prefix)"/share/fish/vendor_completions.d"
 		set -p fish_complete_path (brew --prefix)/share/fish/vendor_completions.d
 	end
-	{{ end -}}
+	{{ end }}
 end

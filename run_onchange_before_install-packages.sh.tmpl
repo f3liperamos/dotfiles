@@ -1,0 +1,22 @@
+#!/bin/sh
+echo "========= Installing Rust ========="
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+echo "========= Installing cargo essentials ========="
+UTILITIES="ast-grep cargo-update dekit difftastic eza fd-find fnm git-delta kdlfmt ripgrep sd stylua tealdeer tree-sitter-cli zellij zoxide"
+cargo install --locked $UTILITIES
+
+echo "========= Installing Atuin ========="
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+echo "========= Installing OS essentials ========="
+ESSENTIALS="curl fish fzf git kitty less lua lua-language-server luajit neovim parallel tmux tree wget"
+ZSH="zsh zsh-history-substring-search zsh-syntax-highlighting"
+
+{{ if eq .chezmoi.os "linux" -}}
+sudo pacman -Syu $ESSENTIALS $ZSH ttc-iosevka
+{{- else if eq .chezmoi.os "darwin" -}}
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install $ESSENTIALS $ZSH openssl@3 pkgconf
+brew install --cask font-iosevka
+{{ end -}}

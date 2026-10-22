@@ -1,5 +1,8 @@
 # PATH
-export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$PATH"
+{{if eq .chezmoi.os "darwin" -}}
+export PATH="/opt/homebrew/bin:$PATH"
+{{- end}}
+export PATH="$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.atuin/bin:$PATH"
 
 # zsh plugins
 {{ if eq .chezmoi.os "darwin" -}}
@@ -15,17 +18,17 @@ bindkey '^[[B' history-substring-search-down
 # Load auto completions
 autoload -Uz compinit && compinit
 
-# FZF Defaults
-source <(fzf --zsh)
-export FZF_DEFAULT_OPTS='--reverse'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-
 # I said, the real editor
-export EDITOR='nvim'
+export EDITOR="nvim"
 
 # Local specific overrides.
-LOCAL_RC=$HOME/.zshrc.local
+LOCAL_RC="$HOME/.zshrc.local"
 test -f $LOCAL_RC && source $LOCAL_RC
+
+{{ if eq .chezmoi.os "darwin" -}}
+# Start brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end}}
 
 # Start FNM
 eval "$(fnm env)"
@@ -35,3 +38,8 @@ eval "$(zoxide init zsh)"
 
 # Start Atuin
 eval "$(atuin init zsh)"
+
+# FZF Defaults
+source <(fzf --zsh)
+export FZF_DEFAULT_OPTS="--reverse"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
